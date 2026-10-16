@@ -1,0 +1,796 @@
+[
+  {
+    "slug": "dr-shahzad",
+    "name": {
+      "en": "Dr. Shahzad Ejaz",
+      "hi": "डॉ. शाहजाद एजाज"
+    },
+    "photoFile": "doctor-image.jpg",
+    "gender": "male",
+    "category": "surgical",
+    "specialtyTags": [
+      "laparoscopic",
+      "hernia",
+      "general-surgery",
+      "gastrointestinal"
+    ],
+    "regNo": "BMC -84920",
+    "degrees": {
+      "en": "MBBS, MS (General Surgery), FACS (USA)",
+      "hi": "MBBS, MS (जनरल सर्जरी), FACS (USA)"
+    },
+    "specialty": {
+      "en": "Senior Laparoscopic & GI Surgeon",
+      "hi": "वरिष्ठ लैप्रोस्कोपिक एवं जीआई सर्जन"
+    },
+    "subSpecialty": {
+      "en": "Mayo Clinic Fellow - Advanced GI & Laparoscopic Surgery",
+      "hi": "मेयो क्लिनिक फेलो - एडवांस्ड जीआई एवं लैप्रोस्कोपिक सर्जरी"
+    },
+    "department": {
+      "en": "Laparoscopic & General Surgery",
+      "hi": "लैप्रोस्कोपिक एवं सामान्य सर्जरी"
+    },
+    "experienceYears": 18,
+    "languages": "English, Hindi, Urdu",
+    "timing": {
+      "en": "10:00 - 16:00 • Mon - Sat",
+      "hi": "10:00 - 16:00 • सोम - शनि"
+    },
+    "hospital": {
+      "en": "Ejaz Clinic & Advanced Surgical Hospital, Patna",
+      "hi": "एजाज क्लिनिक एवं एडवांस्ड सर्जिकल हॉस्पिटल, पटना"
+    },
+    "bio": {
+      "en": "Fellow of the Mayo Clinic, pioneering minimally invasive laparoscopic procedures, complex abdominal wall reconstructions, and advanced surgical interventions.",
+      "hi": "मेयो क्लिनिक के फेलो, न्यूनतम इनवेसिव लैप्रोस्कोपिक प्रक्रियाओं, जटिल उदर दीवार पुनर्निर्माण और उन्नत सर्जिकल देखभाल में विशेषज्ञ।"
+    },
+    "about": {
+      "en": "Dr. Shahzad Ejaz is a premier Senior Laparoscopic and Gastrointestinal Surgeon practicing at Ejaz Clinic, Patna. With over 18 years of specialized clinical and surgical experience, he has garnered an esteemed reputation for surgical precision, low complication rates, and rapid post-operative patient recovery. Having completed an advanced fellowship at the world-renowned Mayo Clinic (Rochester, USA) and being recognized as a Fellow of the American College of Surgeons (FACS), Dr. Ejaz brings international clinical protocols directly to his patients. His compassionate bedside manner and dedication to ethical, evidence-based surgery ensure that each patient receives personalized treatment tailored to their condition.",
+      "hi": "डॉ. शाहजाद एजाज, एजाज क्लिनिक, पटना में एक प्रतिष्ठित वरिष्ठ लैप्रोस्कोपिक और गैस्ट्रोइंटेस्टाइनल सर्जन हैं। 18 से अधिक वर्षों के क्लिनिकल अनुभव के साथ, वे सर्जिकल सटीकता, न्यूनतम जटिलताओं और रोगियों की त्वरित रिकवरी के लिए जाने जाते हैं। विश्व-प्रसिद्ध मेयो क्लिनिक (यूएसए) से उन्नत फेलोशिप प्राप्त और अमेरिकन कॉलेज ऑफ सर्जन्स (FACS) के फेलो होने के नाते, वे अंतरराष्ट्रीय स्तर के उपचार प्रोटोकॉल प्रदान करते हैं।"
+    },
+    "specializations": [
+      {
+        "en": "Single-Incision & Advanced Laparoscopic Surgery",
+        "hi": ""
+      },
+      {
+        "en": "Complex Abdominal Wall Hernia Reconstruction",
+        "hi": ""
+      },
+      {
+        "en": "Gallbladder & Biliary Tract Micro-Laparoscopy",
+        "hi": ""
+      },
+      {
+        "en": "Colorectal & Gastrointestinal Tumor Resections",
+        "hi": ""
+      },
+      {
+        "en": "Emergency Trauma & Acute Abdomen Interventions",
+        "hi": ""
+      },
+      {
+        "en": "Bariatric & Metabolic Weight Loss Procedures",
+        "hi": ""
+      }
+    ],
+    "education": [
+      {
+        "degree": "Clinical Fellowship in Advanced Laparoscopic & GI Surgery",
+        "institution": "Mayo Clinic, Rochester, Minnesota, USA"
+      },
+      {
+        "degree": "Fellow of the American College of Surgeons (FACS)",
+        "institution": "American College of Surgeons, USA"
+      },
+      {
+        "degree": "MS (General Surgery)",
+        "institution": "Top Tier Medical Institute (Gold Medalist)"
+      },
+      {
+        "degree": "MBBS",
+        "institution": "Prestigious Medical College"
+      }
+    ],
+    "isActive": true,
+    "order": 1
+  },
+  {
+    "slug": "dr-ejaz-ali",
+    "name": {
+      "en": "Dr. Ejaz Ali",
+      "hi": "डॉ. एजाज अली"
+    },
+    "photoFile": "doctor-4.jpg",
+    "gender": "male",
+    "category": "surgical",
+    "specialtyTags": [
+      "hernia",
+      "general-surgery"
+    ],
+    "regNo": "BMC -21045",
+    "degrees": {
+      "en": "MBBS, MS, Senior Consultant Surgeon",
+      "hi": "MBBS, MS, वरिष्ठ सलाहकार सर्जन"
+    },
+    "specialty": {
+      "en": "Founder & Chief Medical Advisor",
+      "hi": "संस्थापक एवं मुख्य चिकित्सा सलाहकार"
+    },
+    "subSpecialty": {
+      "en": "Pioneer of Accessible Surgical Healthcare",
+      "hi": "सुलभ सर्जिकल स्वास्थ्य सेवा के प्रणेता"
+    },
+    "department": {
+      "en": "General & Trauma Surgery",
+      "hi": "सामान्य एवं ट्रॉमा सर्जरी"
+    },
+    "experienceYears": 35,
+    "languages": "English, Hindi, Urdu",
+    "timing": {
+      "en": "11:00 - 14:00 • Mon - Fri",
+      "hi": "11:00 - 14:00 • सोम - शुक्र"
+    },
+    "hospital": {
+      "en": "Ejaz Clinic & Advanced Surgical Hospital, Patna",
+      "hi": "एजाज क्लिनिक एवं एडवांस्ड सर्जिकल हॉस्पिटल, पटना"
+    },
+    "bio": {
+      "en": "Founding visionary of Ejaz Clinic & Advanced Surgical Hospital, committed to ensuring no patient is ever denied quality surgical care due to financial constraints.",
+      "hi": "एजाज क्लिनिक और एडवांस्ड सर्जिकल हॉस्पिटल के संस्थापक दूरदर्शी, जिन्होंने यह सुनिश्चित किया कि कोई भी मरीज आर्थिक कारणों से इलाज से वंचित न रहे।"
+    },
+    "about": {
+      "en": "Dr. Ejaz Ali is the founding visionary and Chief Medical Advisor of Ejaz Clinic. With over 35 years of clinical and surgical mastery, he is revered across Bihar and Eastern India for his selfless service, clinical acumen, and surgical dexterity. Having treated tens of thousands of complex emergency and elective cases, Dr. Ali established Ejaz Clinic to ensure that world-class medical and surgical treatment remains compassionate, dignified, and accessible to every family regardless of financial background.",
+      "hi": "डॉ. एजाज अली, एजाज क्लिनिक के संस्थापक और मुख्य चिकित्सा सलाहकार हैं। 35 से अधिक वर्षों की सर्जिकल विशेषज्ञता के साथ, वे बिहार और पूर्वी भारत में अपनी निस्वार्थ सेवा और उत्कृष्ट नैदानिक कौशल के लिए सम्मानित हैं। उन्होंने हजारों मरीजों का सफल इलाज किया है और यह सुनिश्चित किया है कि हर परिवार को सम्मानजनक और सुलभ स्वास्थ्य सेवा मिले।"
+    },
+    "specializations": [
+      {
+        "en": "Advanced General & Gastrointestinal Surgery",
+        "hi": ""
+      },
+      {
+        "en": "Emergency Abdominal & Thoracic Trauma Surgery",
+        "hi": ""
+      },
+      {
+        "en": "Complex Thyroid, Breast & Endocrine Surgeries",
+        "hi": ""
+      },
+      {
+        "en": "Peritonitis & Acute Surgical Critical Care",
+        "hi": ""
+      },
+      {
+        "en": "Multidisciplinary Clinical Governance & Ethics",
+        "hi": ""
+      }
+    ],
+    "education": [
+      {
+        "degree": "MS (General Surgery)",
+        "institution": "Premier National University"
+      },
+      {
+        "degree": "MBBS",
+        "institution": "Leading Government Medical College"
+      }
+    ],
+    "isActive": true,
+    "order": 2
+  },
+  {
+    "slug": "dr-ortho-specialist",
+    "name": {
+      "en": "Dr. Tariq Anwar",
+      "hi": "डॉ. तारिक अनवर"
+    },
+    "photoFile": "doctor-5.jpg",
+    "gender": "male",
+    "category": "super",
+    "specialtyTags": [
+      "orthopaedics"
+    ],
+    "regNo": "BMC -67123",
+    "degrees": {
+      "en": "MBBS, MS (Ortho), DNB, Fellow Joint Replacement",
+      "hi": "MBBS, MS (ऑर्थो), DNB, फेलो जॉइंट रिप्लेसमेंट"
+    },
+    "specialty": {
+      "en": "Consultant Orthopaedic & Spine Surgeon",
+      "hi": "सलाहकार ऑर्थोपेडिक एवं स्पाइन सर्जन"
+    },
+    "subSpecialty": {
+      "en": "Knee & Hip Arthroplasty, Arthroscopy & Sports Medicine",
+      "hi": "नी एवं हिप आर्थ्रोप्लास्टी, आर्थ्रोस्कोपी"
+    },
+    "department": {
+      "en": "Orthopaedics & Joint Care",
+      "hi": "ऑर्थोपेडिक्स एवं जोड़ देखभाल"
+    },
+    "experienceYears": 15,
+    "languages": "English, Hindi",
+    "timing": {
+      "en": "14:00 - 18:00 • Tue, Thu, Sat",
+      "hi": "14:00 - 18:00 • मंगल, गुरु, शनि"
+    },
+    "hospital": {
+      "en": "Ejaz Clinic & Advanced Surgical Hospital, Patna",
+      "hi": "एजाज क्लिनिक एवं एडवांस्ड सर्जिकल हॉस्पिटल, पटना"
+    },
+    "bio": {
+      "en": "Specialising in total joint replacements, sports injury arthroscopic ligament repairs, and advanced spine stabilization surgeries.",
+      "hi": "टोटल जॉइंट रिप्लेसमेंट, स्पोर्ट्स इंजरी आर्थ्रोस्कोपिक लिगामेंट रिपेयर और उन्नत स्पाइन स्टेबिलाइजेशन सर्जरी में विशेषज्ञ।"
+    },
+    "about": {
+      "en": "Dr. Tariq Anwar is a senior Consultant Orthopaedic and Spine Surgeon at Ejaz Clinic. Specializing in computer-navigated total knee and hip replacements, minimally invasive spine decompression, and sports arthroscopy, he has helped hundreds of patients regain pain-free mobility. Dr. Anwar combines cutting-edge orthopaedic implants with comprehensive post-op physical rehabilitation protocols for optimal long-term joint function.",
+      "hi": "डॉ. तारिक अनवर, एजाज क्लिनिक में वरिष्ठ ऑर्थोपेडिक और स्पाइन सर्जन हैं। वे घुटना और कूल्हा प्रत्यारोपण, मिनिमली इनवेसिव स्पाइन सर्जरी और स्पोर्ट्स आर्थ्रोस्कोपी में माहिर हैं। वे मरीजों को दर्द-मुक्त गतिशीलता प्रदान करने के लिए आधुनिक तकनीकों और समग्र पुनर्वास का उपयोग करते हैं।"
+    },
+    "specializations": [
+      {
+        "en": "Total Knee & Hip Replacement (Arthroplasty)",
+        "hi": ""
+      },
+      {
+        "en": "Arthroscopic ACL/PCL Ligament Reconstruction",
+        "hi": ""
+      },
+      {
+        "en": "Minimally Invasive Spine Decompression & Fixation",
+        "hi": ""
+      },
+      {
+        "en": "Complex Polytrauma & Fracture Management",
+        "hi": ""
+      },
+      {
+        "en": "Geriatric Osteoporosis & Joint Preservation",
+        "hi": ""
+      }
+    ],
+    "education": [
+      {
+        "degree": "Fellowship in Joint Replacement & Arthroscopy",
+        "institution": "International Orthopaedic Institute"
+      },
+      {
+        "degree": "DNB (Orthopaedics)",
+        "institution": "National Board of Examinations"
+      },
+      {
+        "degree": "MS (Orthopaedics)",
+        "institution": "State Medical University"
+      },
+      {
+        "degree": "MBBS",
+        "institution": "Prestigious Medical College"
+      }
+    ],
+    "isActive": true,
+    "order": 3
+  },
+  {
+    "slug": "dr-internal-med",
+    "name": {
+      "en": "Dr. Farhan Siddiqui",
+      "hi": "डॉ. फरहान सिद्दीकी"
+    },
+    "photoFile": "doctor-image.jpg",
+    "gender": "male",
+    "category": "medicine",
+    "specialtyTags": [
+      "internal-medicine"
+    ],
+    "regNo": "BMC -59012",
+    "degrees": {
+      "en": "MBBS, MD (Medicine), FCCP (USA)",
+      "hi": "MBBS, MD (मेडिसिन), FCCP (USA)"
+    },
+    "specialty": {
+      "en": "Senior Consultant Internal Medicine",
+      "hi": "वरिष्ठ सलाहकार इंटरनल मेडिसिन"
+    },
+    "subSpecialty": {
+      "en": "Critical Care, Diabetes & Lifestyle Disorders",
+      "hi": "क्रिटिकल केयर, डायबिटीज एवं लाइफस्टाइल विकार"
+    },
+    "department": {
+      "en": "Internal Medicine & Critical Care",
+      "hi": "इंटरनल मेडिसिन एवं क्रिटिकल केयर"
+    },
+    "experienceYears": 14,
+    "languages": "English, Hindi, Urdu",
+    "timing": {
+      "en": "09:00 - 13:00 • Mon - Sat",
+      "hi": "09:00 - 13:00 • सोम - शनि"
+    },
+    "hospital": {
+      "en": "Ejaz Clinic & Advanced Surgical Hospital, Patna",
+      "hi": "एजाज क्लिनिक एवं एडवांस्ड सर्जिकल हॉस्पिटल, पटना"
+    },
+    "bio": {
+      "en": "Expert in managing multi-organ systemic disorders, diabetic emergencies, refractory hypertension, and advanced intensive care resuscitation.",
+      "hi": "बहु-अंग विकारों, डायबिटिक इमरजेंसी, उच्च रक्तचाप और आधुनिक इंटेंसिव केयर पुनर्जीवन के अनुभवी विशेषज्ञ।"
+    },
+    "about": {
+      "en": "Dr. Farhan Siddiqui is an esteemed Senior Consultant in Internal Medicine and Critical Care at Ejaz Clinic. He possesses profound diagnostic acumen in treating complex multi-organ illnesses, resistant diabetes, refractory hypertension, respiratory distress, and severe infectious diseases. As head of internal medicine, he leads comprehensive in-patient rounds and ensures thorough diagnostic evaluations.",
+      "hi": "डॉ. फरहान सिद्दीकी, एजाज क्लिनिक में इंटरनल मेडिसिन और क्रिटिकल केयर के वरिष्ठ सलाहकार हैं। वे अनियंत्रित मधुमेह, उच्च रक्तचाप, श्वसन संबंधी समस्याओं और गंभीर संक्रामक रोगों के सटीक निदान और उपचार में अत्यधिक कुशल हैं।"
+    },
+    "specializations": [
+      {
+        "en": "Comprehensive Diabetes & Metabolic Syndrome Care",
+        "hi": ""
+      },
+      {
+        "en": "Hypertension & Cardiovascular Risk Modulation",
+        "hi": ""
+      },
+      {
+        "en": "Severe Sepsis, ARDS & ICU Resuscitation",
+        "hi": ""
+      },
+      {
+        "en": "Adult Immunization & Preventive Health Checkups",
+        "hi": ""
+      },
+      {
+        "en": "Infectious Disease Diagnostics & Therapy",
+        "hi": ""
+      }
+    ],
+    "education": [
+      {
+        "degree": "FCCP (Fellow of American College of Chest Physicians)",
+        "institution": "ACCP, USA"
+      },
+      {
+        "degree": "MD (General Medicine)",
+        "institution": "Premier Institute of Medical Sciences"
+      },
+      {
+        "degree": "MBBS",
+        "institution": "Top Ranked Government Medical College"
+      }
+    ],
+    "isActive": true,
+    "order": 4
+  },
+  {
+    "slug": "dr-onco-surgeon",
+    "name": {
+      "en": "Dr. Sameer Khan",
+      "hi": "डॉ. समीर खान"
+    },
+    "photoFile": "doctor-4.jpg",
+    "gender": "male",
+    "category": "super",
+    "specialtyTags": [
+      "cancer-surgery"
+    ],
+    "regNo": "BMC -73418",
+    "degrees": {
+      "en": "MBBS, MS, MCh (Surgical Oncology)",
+      "hi": "MBBS, MS, MCh (सर्जिकल ऑन्कोलॉजी)"
+    },
+    "specialty": {
+      "en": "Senior Consultant Cancer Surgeon",
+      "hi": "वरिष्ठ सलाहकार कैंसर सर्जन"
+    },
+    "subSpecialty": {
+      "en": "Gastrointestinal & Thoracic Onco-Surgery",
+      "hi": "गैस्ट्रोइंटेस्टाइनल एवं थोरैसिक ऑन्को-सर्जरी"
+    },
+    "department": {
+      "en": "Cancer Surgery & Onco Care",
+      "hi": "कैंसर सर्जरी एवं ऑन्को केयर"
+    },
+    "experienceYears": 16,
+    "languages": "English, Hindi, Urdu",
+    "timing": {
+      "en": "15:00 - 19:00 • Mon - Fri",
+      "hi": "15:00 - 19:00 • सोम - शुक्र"
+    },
+    "hospital": {
+      "en": "Ejaz Clinic & Advanced Surgical Hospital, Patna",
+      "hi": "एजाज क्लिनिक एवं एडवांस्ड सर्जिकल हॉस्पिटल, पटना"
+    },
+    "bio": {
+      "en": "Specialises in precision tumour resections, organ-preserving oncological interventions, and multidisciplinary cancer board treatment planning.",
+      "hi": "सटीक ट्यूमर रिसेक्शन, अंग-संरक्षक ऑन्कोलॉजिकल उपचार और बहु-विषयक कैंसर बोर्ड योजना के विशेषज्ञ।"
+    },
+    "about": {
+      "en": "Dr. Sameer Khan is an accomplished Surgical Oncologist specializing in precision cancer surgeries. With formal MCh training from a premier cancer institute, Dr. Khan performs organ-sparing gastrointestinal, breast, thoracic, and gynecological tumor resections. He leads the multidisciplinary tumor board at Ejaz Clinic to ensure every cancer patient receives a comprehensive, tailored multimodal treatment strategy.",
+      "hi": "डॉ. समीर खान, एजाज क्लिनिक में एक अनुभवी सर्जिकल ऑन्कोलॉजिस्ट हैं। एम्स-मान्यता प्राप्त संस्थानों से एमसीएच डिग्री प्राप्त डॉ. खान अंग-संरक्षण कैंसर सर्जरी, जीआई और थोरेसिक ट्यूमर ऑपरेशन में विशेष दक्षता रखते हैं।"
+    },
+    "specializations": [
+      {
+        "en": "Minimally Invasive GI & Colorectal Cancer Surgery",
+        "hi": ""
+      },
+      {
+        "en": "Breast Conservation Surgery & Sentinel Lymph Node Biopsy",
+        "hi": ""
+      },
+      {
+        "en": "Thoracic & Esophageal Onco-Surgeries",
+        "hi": ""
+      },
+      {
+        "en": "Head & Neck Tumour Extirpation with Reconstruction",
+        "hi": ""
+      },
+      {
+        "en": "Multidisciplinary Tumor Board Consultation",
+        "hi": ""
+      }
+    ],
+    "education": [
+      {
+        "degree": "MCh (Surgical Oncology)",
+        "institution": "Apex National Cancer Institute"
+      },
+      {
+        "degree": "MS (General Surgery)",
+        "institution": "Renowned Medical University"
+      },
+      {
+        "degree": "MBBS",
+        "institution": "State Medical College"
+      }
+    ],
+    "isActive": true,
+    "order": 5
+  },
+  {
+    "slug": "dr-gynaecologist",
+    "name": {
+      "en": "Dr. Ayesha Rehman",
+      "hi": "डॉ. आयशा रहमान"
+    },
+    "photoFile": "doctor-3.jpg",
+    "gender": "female",
+    "category": "surgical",
+    "specialtyTags": [
+      "gynaecology"
+    ],
+    "regNo": "BMC -81204",
+    "degrees": {
+      "en": "MBBS, MS (OB-GYN), DGO, Fellow Laparoscopy",
+      "hi": "MBBS, MS (OB-GYN), DGO, फेलो लैप्रोस्कोपी"
+    },
+    "specialty": {
+      "en": "Senior Consultant Gynaecologist",
+      "hi": "वरिष्ठ सलाहकार स्त्री एवं प्रसूति रोग विशेषज्ञ"
+    },
+    "subSpecialty": {
+      "en": "High-Risk Pregnancy & Laparoscopic Gynaec Surgery",
+      "hi": "हाई-रिस्क प्रेग्नेंसी एवं लैप्रोस्कोपिक गायनेक सर्जरी"
+    },
+    "department": {
+      "en": "Gynaecology & Obstetrics",
+      "hi": "स्त्री एवं प्रसूति रोग"
+    },
+    "experienceYears": 13,
+    "languages": "English, Hindi, Urdu",
+    "timing": {
+      "en": "10:30 - 14:30 • Mon - Sat",
+      "hi": "10:30 - 14:30 • सोम - शनि"
+    },
+    "hospital": {
+      "en": "Ejaz Clinic & Advanced Surgical Hospital, Patna",
+      "hi": "एजाज क्लिनिक एवं एडवांस्ड सर्जिकल हॉस्पिटल, पटना"
+    },
+    "bio": {
+      "en": "Dedicated to comprehensive women's health, minimally invasive hysterectomies, PCOS management, and painless delivery protocols.",
+      "hi": "व्यापक महिला स्वास्थ्य, न्यूनतम इनवेसिव हिस्टेरेक्टॉमी, पीसीओएस प्रबंधन और पेनलेस डिलीवरी प्रक्रियाओं के लिए समर्पित।"
+    },
+    "about": {
+      "en": "Dr. Ayesha Rehman is a widely trusted Senior Consultant Gynaecologist and Obstetrician at Ejaz Clinic. Her practice encompasses maternal-fetal medicine, high-risk obstetric monitoring, painless delivery, and advanced laparoscopic gynaecological surgeries (total laparoscopic hysterectomy, ovarian cystectomy, and endometriosis treatment). Dr. Rehman is known for her warm empathy, attentive listening, and supportive prenatal care.",
+      "hi": "डॉ. आयशा रहमान, एजाज क्लिनिक में स्त्री एवं प्रसूति रोग की वरिष्ठ सलाहकार हैं। वे हाई-रिस्क प्रेग्नेंसी, दर्द रहित प्रसव और उन्नत लैप्रोस्कोपिक गायनेक सर्जरी में पारंगत हैं। उनकी सहानुभूतिपूर्ण देखरेख और समर्पित मार्गदर्शन महिलाओं को सुरक्षित और सुखद मातृत्व अनुभव प्रदान करता है।"
+    },
+    "specializations": [
+      {
+        "en": "High-Risk Pregnancy & Normal Painless Delivery",
+        "hi": ""
+      },
+      {
+        "en": "Total Laparoscopic Hysterectomy (TLH)",
+        "hi": ""
+      },
+      {
+        "en": "Ovarian Cystectomy & Endometriosis Ablation",
+        "hi": ""
+      },
+      {
+        "en": "PCOS, Infertility & Menstrual Health Protocols",
+        "hi": ""
+      },
+      {
+        "en": "Adolescent & Menopausal Gynecological Care",
+        "hi": ""
+      }
+    ],
+    "education": [
+      {
+        "degree": "Fellowship in Minimal Access Gynecological Surgery",
+        "institution": "Endoscopy Academy"
+      },
+      {
+        "degree": "MS (Obstetrics & Gynaecology)",
+        "institution": "Top Tier Medical Institute"
+      },
+      {
+        "degree": "DGO",
+        "institution": "College of Physicians and Surgeons"
+      },
+      {
+        "degree": "MBBS",
+        "institution": "Leading Medical College"
+      }
+    ],
+    "isActive": true,
+    "order": 6
+  },
+  {
+    "slug": "dr-urologist",
+    "name": {
+      "en": "Dr. Rajiv Ranjan",
+      "hi": "डॉ. राजीव रंजन"
+    },
+    "photoFile": "doctor-5.jpg",
+    "gender": "male",
+    "category": "super",
+    "specialtyTags": [
+      "urology"
+    ],
+    "regNo": "BMC -88319",
+    "degrees": {
+      "en": "MBBS, MS, MCh (Urology), Fellow Endourology",
+      "hi": "MBBS, MS, MCh (यूरोलॉजी), फेलो एंडोयूरोलॉजी"
+    },
+    "specialty": {
+      "en": "Consultant Urologist & Andrologist",
+      "hi": "सलाहकार यूरोलॉजिस्ट एवं एंड्रोलॉजिस्ट"
+    },
+    "subSpecialty": {
+      "en": "Laser Kidney Stone Surgery & Prostate Care",
+      "hi": "लेजर किडनी स्टोन सर्जरी एवं प्रोस्टेट केयर"
+    },
+    "department": {
+      "en": "Urology & Kidney Care",
+      "hi": "यूरोलॉजी एवं किडनी केयर"
+    },
+    "experienceYears": 12,
+    "languages": "English, Hindi",
+    "timing": {
+      "en": "13:00 - 17:00 • Tue, Thu, Sat",
+      "hi": "13:00 - 17:00 • मंगल, गुरु, शनि"
+    },
+    "hospital": {
+      "en": "Ejaz Clinic & Advanced Surgical Hospital, Patna",
+      "hi": "एजाज क्लिनिक एवं एडवांस्ड सर्जिकल हॉस्पिटल, पटना"
+    },
+    "bio": {
+      "en": "Expert in laser lithotripsy (RIRS/PCNL) for complex renal calculi, bipolar TURP for prostate enlargement, and reconstructive urology.",
+      "hi": "जटिल पथरी के लिए लेजर लिथोट्रिप्सी (RIRS/PCNL), प्रोस्टेट वृद्धि के लिए बाइपोलर TURP और रिकंस्ट्रक्टिव यूरोलॉजी के विशेषज्ञ।"
+    },
+    "about": {
+      "en": "Dr. Rajiv Ranjan is a Consultant Urologist and Andrologist specializing in minimally invasive endourology and laser surgical procedures at Ejaz Clinic. He has extensive expertise in holmium laser kidney stone fragmentation (RIRS, Mini-PCNL), bipolar TURP for enlarged prostate, urethral stricture reconstruction, and male reproductive health.",
+      "hi": "डॉ. राजीव रंजन, एजाज क्लिनिक में यूरोलॉजिस्ट और एंड्रोलॉजिस्ट हैं। वे लेजर किडनी स्टोन सर्जरी (RIRS/PCNL), प्रोस्टेट वृद्धि के लिए आधुनिक बाइपोलर सर्जरी और पुरुष प्रजनन स्वास्थ्य में विशेषज्ञता रखते हैं।"
+    },
+    "specializations": [
+      {
+        "en": "Retrograde Intrarenal Surgery (RIRS) with Laser",
+        "hi": ""
+      },
+      {
+        "en": "Mini-Percutaneous Nephrolithotomy (Mini-PCNL)",
+        "hi": ""
+      },
+      {
+        "en": "Bipolar & Laser Prostate Enucleation (TURP)",
+        "hi": ""
+      },
+      {
+        "en": "Reconstructive Urethroplasty for Strictures",
+        "hi": ""
+      },
+      {
+        "en": "Urological Oncology & Male Infertility Solutions",
+        "hi": ""
+      }
+    ],
+    "education": [
+      {
+        "degree": "MCh (Urology)",
+        "institution": "Premier National University"
+      },
+      {
+        "degree": "Fellowship in Laser Endourology",
+        "institution": "World Urology Center"
+      },
+      {
+        "degree": "MS (General Surgery)",
+        "institution": "Reputed Medical College"
+      },
+      {
+        "degree": "MBBS",
+        "institution": "Prestigious Medical Institute"
+      }
+    ],
+    "isActive": false,
+    "order": 7
+  },
+  {
+    "slug": "dr-plastic-surgeon",
+    "name": {
+      "en": "Dr. Neha Verma",
+      "hi": "डॉ. नेहा वर्मा"
+    },
+    "photoFile": "doctor-2.jpg",
+    "gender": "female",
+    "category": "surgical",
+    "specialtyTags": [
+      "plastic-surgery"
+    ],
+    "regNo": "BMC -90412",
+    "degrees": {
+      "en": "MBBS, MS, MCh (Plastic & Reconstructive Surgery)",
+      "hi": "MBBS, MS, MCh (प्लास्टिक एवं रिकंस्ट्रक्टिव सर्जरी)"
+    },
+    "specialty": {
+      "en": "Consultant Plastic & Cosmetic Surgeon",
+      "hi": "सलाहकार प्लास्टिक एवं कॉस्मेटिक सर्जन"
+    },
+    "subSpecialty": {
+      "en": "Microvascular, Burn & Aesthetic Reconstruction",
+      "hi": "माइक्रोवास्कुलर, बर्न एवं एस्थेटिक पुनर्निर्माण"
+    },
+    "department": {
+      "en": "Plastic & Reconstructive Surgery",
+      "hi": "प्लास्टिक एवं रिकंस्ट्रक्टिव सर्जरी"
+    },
+    "experienceYears": 11,
+    "languages": "English, Hindi",
+    "timing": {
+      "en": "16:00 - 19:00 • Mon - Fri",
+      "hi": "16:00 - 19:00 • सोम - शुक्र"
+    },
+    "hospital": {
+      "en": "Ejaz Clinic & Advanced Surgical Hospital, Patna",
+      "hi": "एजाज क्लिनिक एवं एडवांस्ड सर्जिकल हॉस्पिटल, पटना"
+    },
+    "bio": {
+      "en": "Pioneering microsurgical limb restoration, post-trauma scar revisions, burn contracture releases, and advanced aesthetic surgery.",
+      "hi": "माइक्रोसर्जिकल अंग बहाली, ट्रॉमा के बाद निशान संशोधन, बर्न सिकुड़न सुधार और आधुनिक एस्थेटिक सर्जरी की विशेषज्ञ।"
+    },
+    "about": {
+      "en": "Dr. Neha Verma is an accomplished Consultant Plastic and Reconstructive Surgeon at Ejaz Clinic. Her surgical precision spans aesthetic facial contouring, rhinoplasty, breast reduction and augmentation, post-burn scar contracture release, microvascular tissue transfer, and complex wound healing.",
+      "hi": "डॉ. नेहा वर्मा, एजाज क्लिनिक में प्लास्टिक और कॉस्मेटिक सर्जन हैं। वे चेहरे के एस्थेटिक सुधार, राइनोप्लास्टी, बर्न के बाद निशान संशोधन और सूक्ष्म-संवहनी ऊतक पुनर्निर्माण में कुशल हैं।"
+    },
+    "specializations": [
+      {
+        "en": "Facial Cosmetic Contouring & Rhinoplasty",
+        "hi": ""
+      },
+      {
+        "en": "Burn Contracture Release & Advanced Skin Grafting",
+        "hi": ""
+      },
+      {
+        "en": "Microvascular Free Flap Reconstructive Surgery",
+        "hi": ""
+      },
+      {
+        "en": "Post-Trauma Scar Revision & Keloid Therapy",
+        "hi": ""
+      },
+      {
+        "en": "Diabetic Foot Reconstruction & Complex Wound Closure",
+        "hi": ""
+      }
+    ],
+    "education": [
+      {
+        "degree": "MCh (Plastic & Reconstructive Surgery)",
+        "institution": "Apex Medical Institute"
+      },
+      {
+        "degree": "MS (General Surgery)",
+        "institution": "Top Tier Medical College"
+      },
+      {
+        "degree": "MBBS",
+        "institution": "Government Medical College"
+      }
+    ],
+    "isActive": false,
+    "order": 8
+  },
+  {
+    "slug": "dr-anaesthesiologist",
+    "name": {
+      "en": "Dr. Sneha Kapoor",
+      "hi": "डॉ. स्नेहा कपूर"
+    },
+    "photoFile": "doctor-3.jpg",
+    "gender": "female",
+    "category": "medicine",
+    "specialtyTags": [
+      "anaesthesia"
+    ],
+    "regNo": "BMC -76503",
+    "degrees": {
+      "en": "MBBS, MD (Anaesthesiology), IDCCM (Critical Care)",
+      "hi": "MBBS, MD (एनेस्थिसियोलॉजी), IDCCM (क्रिटिकल केयर)"
+    },
+    "specialty": {
+      "en": "Senior Consultant Anaesthesiologist",
+      "hi": "वरिष्ठ सलाहकार एनेस्थिसियोलॉजिस्ट"
+    },
+    "subSpecialty": {
+      "en": "Critical Care Medicine & Pain Management",
+      "hi": "क्रिटिकल केयर मेडिसिन एवं पेन मैनेजमेंट"
+    },
+    "department": {
+      "en": "Anaesthesia & Critical Care",
+      "hi": "एनेस्थीसिया एवं क्रिटिकल केयर"
+    },
+    "experienceYears": 14,
+    "languages": "English, Hindi",
+    "timing": {
+      "en": "08:30 - 16:30 • Mon - Sat",
+      "hi": "08:30 - 16:30 • सोम - शनि"
+    },
+    "hospital": {
+      "en": "Ejaz Clinic & Advanced Surgical Hospital, Patna",
+      "hi": "एजाज क्लिनिक एवं एडवांस्ड सर्जिकल हॉस्पिटल, पटना"
+    },
+    "bio": {
+      "en": "Expert in advanced hemodynamic monitoring, ICU resuscitation, multimodal pain relief protocols, and precision neuro-axial anaesthesia.",
+      "hi": "उन्नत हेमोडायनामिक निगरानी, आईसीयू रिससिटेशन, मल्टीमॉडल दर्द निवारण प्रोटोकॉल और सटीक न्यूरो-एक्सियल एनेस्थीसिया की विशेषज्ञ।"
+    },
+    "about": {
+      "en": "Dr. Sneha Kapoor is a Senior Consultant Anaesthesiologist and Critical Care Intensivist heading perioperative safety at Ejaz Clinic. With specialized training in advanced neuroaxial blocks, pediatric and geriatric anaesthesia, difficult airway algorithms, and round-the-clock ICU management, Dr. Kapoor ensures maximum patient safety, zero surgical awareness, and swift post-anaesthesia emergence.",
+      "hi": "डॉ. स्नेहा कपूर, एजाज क्लिनिक में एनेस्थीसिया और क्रिटिकल केयर की वरिष्ठ सलाहकार हैं। वे पेरी-ऑपरेटिव सुरक्षा, दर्द निवारण और 24/7 आईसीयू प्रबंधन में विशेष रूप से कुशल हैं।"
+    },
+    "specializations": [
+      {
+        "en": "Advanced Hemodynamic ICU Monitoring & Resuscitation",
+        "hi": ""
+      },
+      {
+        "en": "Ultrasound-Guided Regional Nerve Blocks & Analgesia",
+        "hi": ""
+      },
+      {
+        "en": "Obstetric Painless Labour Epidural Protocols",
+        "hi": ""
+      },
+      {
+        "en": "Difficult Airway & Emergency Perioperative Care",
+        "hi": ""
+      },
+      {
+        "en": "Multimodal Postoperative Pain Management",
+        "hi": ""
+      }
+    ],
+    "education": [
+      {
+        "degree": "IDCCM (Indian Diploma in Critical Care Medicine)",
+        "institution": "ISCCM"
+      },
+      {
+        "degree": "MD (Anaesthesiology)",
+        "institution": "Renowned Institute of Medical Sciences"
+      },
+      {
+        "degree": "MBBS",
+        "institution": "Leading Medical College"
+      }
+    ],
+    "isActive": true,
+    "order": 9
+  }
+]

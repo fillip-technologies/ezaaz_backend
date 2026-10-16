@@ -1,0 +1,11 @@
+[
+  { "slug": "laparoscopic", "name": { "en": "Advanced Laparoscopic Surgery", "hi": "उन्नत लैप्रोस्कोपिक सर्जरी" } },
+  { "slug": "cancer", "name": { "en": "Cancer Surgery (Oncology)", "hi": "कैंसर सर्जरी (ऑन्कोलॉजी)" } },
+  { "slug": "hernia", "name": { "en": "Complex Hernia & Abdominal Wall", "hi": "हर्निया एवं एब्डोमिनल वॉल रिपेयर" } },
+  { "slug": "orthopaedics", "name": { "en": "Orthopaedics & Joint Replacement", "hi": "ऑर्थोपेडिक्स एवं रोबोटिक नी रिप्लेसमेंट" } },
+  { "slug": "urology", "name": { "en": "Urology & Kidney Stone Care", "hi": "यूरोलॉजी एवं किडनी स्टोन" } },
+  { "slug": "gynaecology", "name": { "en": "Obstetrics & Gynaecology", "hi": "स्त्री एवं प्रसूति रोग" } },
+  { "slug": "general-surgery", "name": { "en": "General & Emergency Surgery", "hi": "जनरल एवं ट्रॉमा सर्जरी" } },
+  { "slug": "internal", "name": { "en": "Internal Medicine & ICU", "hi": "इंटरनल मेडिसिन एवं क्रिटिकल केयर" } },
+  { "slug": "physiotherapy", "name": { "en": "Physiotherapy & Rehabilitation", "hi": "फिजियोथेरेपी एवं पुनर्वास" } }
+]

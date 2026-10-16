@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "surgery",
+    "name": {
+      "en": "Minimally Invasive Surgery",
+      "hi": "न्यूनतम इनवेसिव सर्जरी"
+    },
+    "order": 1
+  },
+  {
+    "slug": "preventive",
+    "name": {
+      "en": "Preventive Health",
+      "hi": "निवारक स्वास्थ्य"
+    },
+    "order": 2
+  },
+  {
+    "slug": "cardiology",
+    "name": {
+      "en": "Cardiology & Critical Care",
+      "hi": "कार्डियोलॉजी एवं आईसीयू"
+    },
+    "order": 3
+  },
+  {
+    "slug": "ortho",
+    "name": {
+      "en": "Orthopaedics & Joint Care",
+      "hi": "हड्डी एवं जोड़ रोग"
+    },
+    "order": 4
+  },
+  {
+    "slug": "pain-care",
+    "name": {
+      "en": "Thoracic & Pain Care",
+      "hi": "थोरेसिक एवं दर्द प्रबंधन"
+    },
+    "order": 5
+  },
+  {
+    "slug": "wellness",
+    "name": {
+      "en": "Mental Wellness",
+      "hi": "मानसिक स्वास्थ्य"
+    },
+    "order": 6
+  },
+  {
+    "slug": "education",
+    "name": {
+      "en": "Medical Training",
+      "hi": "चिकित्सा प्रशिक्षण"
+    },
+    "order": 7
+  }
+]
