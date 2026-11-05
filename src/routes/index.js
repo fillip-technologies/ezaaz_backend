@@ -4,6 +4,7 @@ import { cacheStatus } from '../config/cache.js';
 import { authRoutes } from '../modules/auth/index.js';
 import { publicDoctorRoutes, adminDoctorRoutes } from '../modules/doctor/index.js';
 import { publicBlogRoutes, adminBlogRoutes, adminBlogCategoryRoutes } from '../modules/blog/index.js';
+import { publicGalleryRoutes, adminGalleryRoutes, adminGalleryCategoryRoutes } from '../modules/gallery/index.js';
 import {
   publicDepartmentRoutes,
   publicContactRoutes,
@@ -31,6 +32,9 @@ router.use('/admin/doctors', adminDoctorRoutes);
 router.use('/blogs', publicBlogRoutes);
 router.use('/admin/blogs', adminBlogRoutes);
 router.use('/admin/blog-categories', adminBlogCategoryRoutes);
+router.use('/gallery', publicGalleryRoutes);
+router.use('/admin/gallery', adminGalleryRoutes);
+router.use('/admin/gallery-categories', adminGalleryCategoryRoutes);
 router.use('/departments', publicDepartmentRoutes);
 router.use('/contact', publicContactRoutes);
 router.use('/admin/departments', adminDepartmentRoutes);

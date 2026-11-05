@@ -3,3 +3,4 @@ export { default as Leave } from './leave.model.js';
 export { default as SlotPlan } from './slotPlan.model.js';
 export { publicAppointmentRoutes, adminAppointmentRoutes, adminLeaveRoutes, adminSlotPlanRoutes } from './appointment.routes.js';
 export * as appointmentService from './appointment.service.js';
+export { TEMPLATES as whatsappTemplates } from './appointment.whatsapp.js';

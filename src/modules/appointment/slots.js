@@ -3,6 +3,9 @@ import { toMinutes } from '../doctor/doctor.model.js';
 
 export const CLINIC_TIME_ZONE = 'Asia/Kolkata';
 
+// One patient per time slot: once booked, a slot is closed until the booking is cancelled
+export const SEATS_PER_SLOT = 1;
+
 const pad = (n) => String(n).padStart(2, '0');
 export const fromMinutes = (m) => `${pad(Math.floor(m / 60))}:${pad(m % 60)}`;
 
@@ -75,8 +78,7 @@ export function daySlots({ schedule, date, leaves = [], booked = new Map(), now 
   const upcoming = open.filter((t) => offset * 1440 + toMinutes(t) - now.minutes >= Math.max(notice, 1));
   if (!upcoming.length) return { status: 'closed', slots: [] };
 
-  const capacity = schedule?.capacity || 1;
-  const slots = upcoming.map((time) => ({ time, remaining: Math.max(0, capacity - (booked.get(time) || 0)) }));
+  const slots = upcoming.map((time) => ({ time, remaining: Math.max(0, SEATS_PER_SLOT - (booked.get(time) || 0)) }));
   return { status: slots.some((s) => s.remaining > 0) ? 'available' : 'full', slots };
 }
 

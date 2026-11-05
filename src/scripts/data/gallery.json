@@ -1,0 +1,462 @@
+{
+  "categories": [
+    {
+      "slug": "orthopedic",
+      "name": {
+        "en": "Orthopedic & Joint Care",
+        "hi": "हड्डी एवं जोड़ रोग देखभाल"
+      },
+      "order": 1
+    },
+    {
+      "slug": "surgical",
+      "name": {
+        "en": "Modular OT & Surgical",
+        "hi": "मॉड्यूलर ओटी एवं सर्जरी"
+      },
+      "order": 2
+    },
+    {
+      "slug": "laboratory",
+      "name": {
+        "en": "Laboratory & Diagnostics",
+        "hi": "प्रयोगशाला एवं जांच"
+      },
+      "order": 3
+    },
+    {
+      "slug": "nursing",
+      "name": {
+        "en": "Nursing & Patient Care",
+        "hi": "नर्सिंग एवं रोगी देखभाल"
+      },
+      "order": 4
+    },
+    {
+      "slug": "icu",
+      "name": {
+        "en": "ICU & Critical Care",
+        "hi": "आईसीयू एवं क्रिटिकल केयर"
+      },
+      "order": 5
+    },
+    {
+      "slug": "facilities",
+      "name": {
+        "en": "Facilities & Imaging",
+        "hi": "सुविधाएं एवं इमेजिंग"
+      },
+      "order": 6
+    }
+  ],
+  "photos": [
+    {
+      "file": "Orthopaedic-images/DSC00001.JPG",
+      "categorySlug": "orthopedic",
+      "label": {
+        "en": "Orthopedic Specialist"
+      },
+      "title": {
+        "en": "Dr. I. Akram — Senior Orthopaedic Surgeon"
+      },
+      "position": "center 20%",
+      "showOnHome": true
+    },
+    {
+      "file": "Orthopaedic-images/DSC00033.JPG",
+      "categorySlug": "orthopedic",
+      "label": {
+        "en": "Joint Replacement"
+      },
+      "title": {
+        "en": "Advanced Total Knee Replacement Surgery in Modular OT"
+      },
+      "position": "center center",
+      "showOnHome": true
+    },
+    {
+      "file": "Orthopaedic-images/DSC00034.JPG",
+      "categorySlug": "orthopedic",
+      "label": {
+        "en": "Orthopedic Surgery"
+      },
+      "title": {
+        "en": "Orthopedic Surgical Team Performing Knee Joint Reconstruction"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "Orthopaedic-images/DSC00035.JPG",
+      "categorySlug": "orthopedic",
+      "label": {
+        "en": "Joint Reconstruction"
+      },
+      "title": {
+        "en": "Sub-Millimeter Precision Joint & Ligament Reconstruction"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "Orthopaedic-images/DSC00036.JPG",
+      "categorySlug": "orthopedic",
+      "label": {
+        "en": "Arthroscopy & Sports"
+      },
+      "title": {
+        "en": "Surgical Site Incision & Minimally Invasive Joint Navigation"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "Orthopaedic-images/DSC00037.JPG",
+      "categorySlug": "orthopedic",
+      "label": {
+        "en": "Orthopedic Surgery"
+      },
+      "title": {
+        "en": "Real-Time Surgical Guidance for Complex Limb Interventions"
+      },
+      "position": "center center",
+      "showOnHome": true
+    },
+    {
+      "file": "Orthopaedic-images/DSC00038.JPG",
+      "categorySlug": "orthopedic",
+      "label": {
+        "en": "Joint Replacement"
+      },
+      "title": {
+        "en": "Micro-Focused Orthopedic Incision & Bone Realignment"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "Orthopaedic-images/DSC00039.JPG",
+      "categorySlug": "orthopedic",
+      "label": {
+        "en": "Trauma & Reconstruction"
+      },
+      "title": {
+        "en": "Dual Orthopedic Surgeons Performing Lower Limb Reconstruction"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "Orthopaedic-images/DSC00047.JPG",
+      "categorySlug": "orthopedic",
+      "label": {
+        "en": "Limb Stabilization"
+      },
+      "title": {
+        "en": "Sterile Lower Limb Alignment & Tendon Fixation under OT Light"
+      },
+      "position": "center center",
+      "showOnHome": true
+    },
+    {
+      "file": "Orthopaedic-images/DSC00048.JPG",
+      "categorySlug": "orthopedic",
+      "label": {
+        "en": "Orthopedic Surgery"
+      },
+      "title": {
+        "en": "Precision Limb Maneuvering & Sterile Orthopedic Draping"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "Orthopaedic-images/DSC00075.JPG",
+      "categorySlug": "orthopedic",
+      "label": {
+        "en": "Surgical Team"
+      },
+      "title": {
+        "en": "High-Precision Bone & Joint Intervention under Shadowless Lamps"
+      },
+      "position": "center 20%",
+      "showOnHome": false
+    },
+    {
+      "file": "Nursing/team-portrait.png",
+      "categorySlug": "nursing",
+      "label": {
+        "en": "Care Team"
+      },
+      "title": {
+        "en": "Ejaz Hospital Care Team & Clinical Staff"
+      },
+      "position": "center center",
+      "showOnHome": true
+    },
+    {
+      "file": "Nursing/14.jpg",
+      "categorySlug": "nursing",
+      "label": {
+        "en": "Nursing Care"
+      },
+      "title": {
+        "en": "Ward Nurse Reviewing Inpatient Chart & Medication"
+      },
+      "position": "center 20%",
+      "showOnHome": true
+    },
+    {
+      "file": "Nursing/16.jpg",
+      "categorySlug": "nursing",
+      "label": {
+        "en": "Nursing Care"
+      },
+      "title": {
+        "en": "Compassionate Bedside Patient Care & Monitoring"
+      },
+      "position": "center 20%",
+      "showOnHome": true
+    },
+    {
+      "file": "Nursing/44.jpg",
+      "categorySlug": "nursing",
+      "label": {
+        "en": "Nursing Care"
+      },
+      "title": {
+        "en": "Specialized Hand Bandaging & Wound Dressing Care"
+      },
+      "position": "center 25%",
+      "showOnHome": true
+    },
+    {
+      "file": "Nursing/45.jpg",
+      "categorySlug": "nursing",
+      "label": {
+        "en": "Nursing Care"
+      },
+      "title": {
+        "en": "Intravenous (IV) Infusion Therapy Administration"
+      },
+      "position": "center 20%",
+      "showOnHome": true
+    },
+    {
+      "file": "Nursing/46.jpg",
+      "categorySlug": "nursing",
+      "label": {
+        "en": "Critical Nursing"
+      },
+      "title": {
+        "en": "Continuous Multi-Para Vital Signs Telemetry"
+      },
+      "position": "center 25%",
+      "showOnHome": true
+    },
+    {
+      "file": "Nursing/47.jpg",
+      "categorySlug": "nursing",
+      "label": {
+        "en": "Nursing Care"
+      },
+      "title": {
+        "en": "Post-Operative Recovery Patient Comfort Care"
+      },
+      "position": "center 25%",
+      "showOnHome": true
+    },
+    {
+      "file": "Laboratory/27.png",
+      "categorySlug": "laboratory",
+      "label": {
+        "en": "Laboratory"
+      },
+      "title": {
+        "en": "Mindray Immunoassay Automated Diagnostics Analyzer"
+      },
+      "position": "center 20%",
+      "showOnHome": true
+    },
+    {
+      "file": "Laboratory/33.jpg",
+      "categorySlug": "laboratory",
+      "label": {
+        "en": "Laboratory"
+      },
+      "title": {
+        "en": "Biochemical Diagnostics & Precision Sample Pipetting"
+      },
+      "position": "center 25%",
+      "showOnHome": true
+    },
+    {
+      "file": "Laboratory/34.jpg",
+      "categorySlug": "laboratory",
+      "label": {
+        "en": "Laboratory"
+      },
+      "title": {
+        "en": "Automated Chemistry Analyzer Workstation"
+      },
+      "position": "center 25%",
+      "showOnHome": true
+    },
+    {
+      "file": "Laboratory/35.jpg",
+      "categorySlug": "laboratory",
+      "label": {
+        "en": "Laboratory"
+      },
+      "title": {
+        "en": "High-Power Microscopic Cellular Pathology Examination"
+      },
+      "position": "center 25%",
+      "showOnHome": true
+    },
+    {
+      "file": "Laboratory/36.jpg",
+      "categorySlug": "laboratory",
+      "label": {
+        "en": "Laboratory"
+      },
+      "title": {
+        "en": "Micro-Pipetting for Precision Hematology Testing"
+      },
+      "position": "center 25%",
+      "showOnHome": true
+    },
+    {
+      "file": "Laboratory/37.jpg",
+      "categorySlug": "laboratory",
+      "label": {
+        "en": "Laboratory"
+      },
+      "title": {
+        "en": "Blood Specimen Verification & Diagnostic Testing"
+      },
+      "position": "center 25%",
+      "showOnHome": true
+    },
+    {
+      "file": "OT-PHOTOS/DSC00453.JPG",
+      "categorySlug": "surgical",
+      "label": {
+        "en": "Operation Theatre"
+      },
+      "title": {
+        "en": "Advanced Modular Operation Theatre Suite"
+      },
+      "position": "center center",
+      "showOnHome": true
+    },
+    {
+      "file": "OT-PHOTOS/DSC00761.JPG",
+      "categorySlug": "surgical",
+      "label": {
+        "en": "Operation Theatre"
+      },
+      "title": {
+        "en": "State-of-the-Art Surgical Suite & Operating Table"
+      },
+      "position": "center center",
+      "showOnHome": true
+    },
+    {
+      "file": "OT-PHOTOS/DSC00762.JPG",
+      "categorySlug": "surgical",
+      "label": {
+        "en": "Operation Theatre"
+      },
+      "title": {
+        "en": "Sterile Surgical Environment & Shadowless LED OT Lights"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "OT-PHOTOS/48.jpg",
+      "categorySlug": "surgical",
+      "label": {
+        "en": "Operation Theatre"
+      },
+      "title": {
+        "en": "High-Tech Anesthesia Workstation & Vital Monitoring"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "OT-PHOTOS/image-1.jpeg",
+      "categorySlug": "surgical",
+      "label": {
+        "en": "Operation Theatre"
+      },
+      "title": {
+        "en": "Precision Surgical Infrastructure & Laparoscopic Tower"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "home/procedures/icu.png",
+      "categorySlug": "icu",
+      "label": {
+        "en": "Intensive Care"
+      },
+      "title": {
+        "en": "Critical Care ICU Multi-Bed Setup"
+      },
+      "position": "center center",
+      "showOnHome": true
+    },
+    {
+      "file": "home/procedures/radiology-image.png",
+      "categorySlug": "facilities",
+      "label": {
+        "en": "Radiology"
+      },
+      "title": {
+        "en": "Advanced 128-Slice CT & MRI Diagnostic Suite"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "home/procedures/general-ward.png",
+      "categorySlug": "facilities",
+      "label": {
+        "en": "Inpatient Care"
+      },
+      "title": {
+        "en": "Deluxe Patient Recovery Room & Private Ward"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "home/why-choose-ejaz.jpg",
+      "categorySlug": "facilities",
+      "label": {
+        "en": "Infrastructure"
+      },
+      "title": {
+        "en": "Hospital Central Facilities & Patient Care"
+      },
+      "position": "center center",
+      "showOnHome": false
+    },
+    {
+      "file": "home/procedures/emergency-image.png",
+      "categorySlug": "facilities",
+      "label": {
+        "en": "Emergency Care"
+      },
+      "title": {
+        "en": "24×7 Emergency & Trauma Resuscitation Bay"
+      },
+      "position": "center center",
+      "showOnHome": false
+    }
+  ]
+}

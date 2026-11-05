@@ -22,7 +22,11 @@ export default function errorHandler(err, req, res, next) {
   } else if (err instanceof multer.MulterError) {
     statusCode = 400;
     message =
-      err.code === 'LIMIT_FILE_SIZE' ? `File is too large (max ${req.uploadLimitMb ?? env.MAX_UPLOAD_MB} MB)` : err.message;
+      err.code === 'LIMIT_FILE_SIZE'
+        ? `File is too large (max ${req.uploadLimitMb ?? env.MAX_UPLOAD_MB} MB)`
+        : err.code === 'LIMIT_FILE_COUNT' || err.code === 'LIMIT_UNEXPECTED_FILE'
+          ? 'Too many files, or a file was sent in the wrong field'
+          : err.message;
   }
 
   if (statusCode >= 500) console.error(err);

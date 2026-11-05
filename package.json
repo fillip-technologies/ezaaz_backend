@@ -11,7 +11,10 @@
     "seed:doctors": "node src/scripts/seedDoctors.js",
     "seed:blogs": "node src/scripts/seedBlogs.js",
     "seed:departments": "node src/scripts/seedDepartments.js",
-    "seed:schedules": "node src/scripts/seedSchedules.js"
+    "seed:schedules": "node src/scripts/seedSchedules.js",
+    "seed:gallery": "node src/scripts/seedGallery.js",
+    "whatsapp:templates": "node src/scripts/whatsappTemplates.js",
+    "whatsapp:test": "node src/scripts/testWhatsApp.js"
   },
   "repository": {
     "type": "git",

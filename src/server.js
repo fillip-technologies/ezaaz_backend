@@ -2,7 +2,9 @@ import env from './config/env.js';
 import { connectDB, disconnectDB } from './config/database.js';
 import { connectCache, disconnectCache } from './config/cache.js';
 import { verifyMailer } from './config/mailer.js';
+import { verifyWhatsApp } from './config/whatsapp.js';
 import app from './app.js';
+import { appointmentService, whatsappTemplates } from './modules/appointment/index.js';
 
 async function start() {
   try {
@@ -12,8 +14,10 @@ async function start() {
     process.exit(1);
   }
 
+  await appointmentService.migrateRequestedBookings().catch((err) => console.error(`Status migration failed: ${err.message}`));
   connectCache();
   verifyMailer();
+  verifyWhatsApp(Object.values(whatsappTemplates));
 
   // Express 5 passes listen errors (e.g. port already in use) to this callback
   const server = app.listen(env.PORT, (err) => {

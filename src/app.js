@@ -14,7 +14,7 @@ app.use(cors({ origin: env.CLIENT_URL }));
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Uploaded images (doctor photos). Only jpg/png/webp are ever written here.
+// Uploaded media (doctor photos, blog covers, gallery). Only jpg/png/webp images and mp4/webm videos are ever written here.
 app.use(
   '/uploads',
   express.static(env.UPLOAD_DIR, {

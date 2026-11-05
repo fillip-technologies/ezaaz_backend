@@ -51,16 +51,7 @@ function build(subject, heading, paragraphs, rows) {
   return { subject, html: layout(heading, paragraphs, rows), text: text(heading, paragraphs, rows) };
 }
 
-// To the patient, right after booking
-export function requestReceivedEmail(a) {
-  return build(
-    `Appointment request ${a.ref} received`,
-    `Hi ${a.patientName}, we've received your appointment request`,
-    ['Your time slot is held for you. Our team will call or email you shortly to confirm it.'],
-    bookingRows(a),
-  );
-}
-
+// To the patient, right after booking (bookings are confirmed automatically)
 export function confirmedEmail(a) {
   return build(
     `Appointment ${a.ref} confirmed`,
@@ -70,9 +61,22 @@ export function confirmedEmail(a) {
   );
 }
 
+// To each patient whose booking falls inside newly added doctor leave / hospital holiday
+export function doctorUnavailableEmail(a) {
+  return build(
+    `Appointment ${a.ref}: doctor not available`,
+    `Hi ${a.patientName}, ${a.doctorName} will not be available at your appointment time`,
+    [
+      'We are sorry, but due to an unavoidable reason the doctor cannot attend on your booked date.',
+      'Please do not come to the hospital for this appointment. Our team will inform you shortly of your new appointment time.',
+    ],
+    bookingRows(a),
+  );
+}
+
 export function rescheduledEmail(a) {
   return build(
-    `Appointment ${a.ref} rescheduled`,
+    `Appointment ${a.ref} postponed`,
     `Hi ${a.patientName}, your appointment has a new time`,
     ['If this time doesn\'t work for you, please call the hospital.'],
     bookingRows(a),
@@ -83,17 +87,22 @@ export function cancelledEmail(a) {
   return build(
     `Appointment ${a.ref} cancelled`,
     `Hi ${a.patientName}, your appointment has been cancelled`,
-    [a.cancelReason ? `Reason: ${a.cancelReason}` : 'Please call the hospital if you would like to book another time.'],
+    [
+      ...(a.cancelReason ? [`Reason: ${a.cancelReason}`] : []),
+      a.nextVisitDate
+        ? `Please visit the hospital on ${formatDate(a.nextVisitDate)} to be checked by ${a.doctorName}.`
+        : 'Please call the hospital if you would like to book another time.',
+    ],
     bookingRows(a),
   );
 }
 
-// To the hospital, for every new request
+// To the hospital, for every new booking (already confirmed automatically)
 export function newRequestEmail(a) {
   return build(
-    `New appointment request: ${a.patientName}, ${formatDate(a.date)} ${formatTime(a.time)}`,
-    'New appointment request',
-    [`Confirm or cancel it in the admin panel: ${env.CLIENT_URL}/master/appointments`],
+    `New appointment: ${a.patientName}, ${formatDate(a.date)} ${formatTime(a.time)}`,
+    'New appointment booked',
+    [`The slot is now taken. To free it, cancel the booking in the admin panel: ${env.CLIENT_URL}/master/appointments`],
     [
       ...bookingRows(a),
       ['Patient', a.patientName],
