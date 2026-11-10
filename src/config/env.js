@@ -48,6 +48,21 @@ const env = Object.freeze({
     .split(',')
     .map((n) => n.trim())
     .filter(Boolean),
+  // Webhook (incoming messages + delivery receipts). Empty secret = the webhook rejects every POST.
+  WHATSAPP_APP_ID: process.env.WHATSAPP_APP_ID || '',
+  WHATSAPP_APP_SECRET: process.env.WHATSAPP_APP_SECRET || '',
+  WHATSAPP_WEBHOOK_VERIFY_TOKEN: process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN || '',
+  // Answer a patient's first message (and STOP/START) automatically
+  WHATSAPP_AUTO_REPLY: process.env.WHATSAPP_AUTO_REPLY !== 'false',
+  // Shown in automatic replies
+  HOSPITAL_PHONE: process.env.HOSPITAL_PHONE || '+91 7362 004 545',
+  EMERGENCY_PHONE: process.env.EMERGENCY_PHONE || '+91 6203 770 070',
+  // Optional link in the after-visit message, e.g. the Google review page
+  FEEDBACK_URL: process.env.FEEDBACK_URL || '',
+
+  // Appointment reminders: sent from this hour (IST, 0-23) the day before. REMINDERS_ENABLED=false turns them off.
+  REMINDERS_ENABLED: process.env.REMINDERS_ENABLED !== 'false',
+  REMINDER_HOUR: Number(process.env.REMINDER_HOUR ?? 18),
 
   // Managed Redis connection string (redis:// or rediss:// for TLS). Empty = no cache, MongoDB only.
   REDIS_URL: process.env.REDIS_URL || '',
@@ -58,6 +73,9 @@ const env = Object.freeze({
   // Uploaded files (doctor photos) are stored here and served at /uploads
   UPLOAD_DIR: path.resolve(process.env.UPLOAD_DIR || 'uploads'),
   MAX_UPLOAD_MB: Number(process.env.MAX_UPLOAD_MB) || 3,
+  // Patient reports and WhatsApp media. Never served publicly: only through signed-in admin routes.
+  PRIVATE_UPLOAD_DIR: path.resolve(process.env.PRIVATE_UPLOAD_DIR || 'private_uploads'),
+  MAX_REPORT_MB: Number(process.env.MAX_REPORT_MB) || 15,
 });
 
 export default env;

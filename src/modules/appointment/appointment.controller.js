@@ -45,8 +45,8 @@ export async function createLeave(req, res) {
 }
 
 export async function removeLeave(req, res) {
-  await appointmentService.deleteLeave(req.params.id);
-  res.json({ success: true, message: 'Leave entry deleted' });
+  const data = await appointmentService.deleteLeave(req.params.id);
+  res.json({ success: true, message: 'Leave entry deleted', data });
 }
 
 /* Admin: slot plans */

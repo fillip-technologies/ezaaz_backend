@@ -50,6 +50,17 @@ const appointmentSchema = new mongoose.Schema(
     cancelReason: { type: String, trim: true, maxlength: 300, default: '' },
     // Optional day the patient should come instead, set when cancelling and included in the email
     nextVisitDate: { type: String, default: '', match: [new RegExp(`^$|${DATE_PATTERN[0].source}`), DATE_PATTERN[1]] },
+
+    // The patient's record (found or created at booking)
+    patient: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', default: null },
+    // Website language at booking: WhatsApp messages use the Hindi templates for 'hi'
+    language: { type: String, enum: ['en', 'hi'], default: 'en' },
+    // WhatsApp reminders (each is claimed atomically, so it's sent once even across restarts)
+    reminderSentAt: { type: Date, default: null },
+    nextVisitReminderSentAt: { type: Date, default: null },
+    // Reminder buttons: "I'll be there" / "Need to change"
+    patientConfirmedAt: { type: Date, default: null },
+    changeRequestedAt: { type: Date, default: null },
   },
   {
     timestamps: true,

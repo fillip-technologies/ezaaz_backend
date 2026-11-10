@@ -4,3 +4,4 @@ export { default as SlotPlan } from './slotPlan.model.js';
 export { publicAppointmentRoutes, adminAppointmentRoutes, adminLeaveRoutes, adminSlotPlanRoutes } from './appointment.routes.js';
 export * as appointmentService from './appointment.service.js';
 export { TEMPLATES as whatsappTemplates } from './appointment.whatsapp.js';
+export { startReminders, runReminders } from './reminders.js';

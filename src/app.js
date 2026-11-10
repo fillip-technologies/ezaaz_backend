@@ -11,7 +11,15 @@ app.set('trust proxy', 1);
 app.disable('x-powered-by');
 
 app.use(cors({ origin: env.CLIENT_URL }));
-app.use(express.json({ limit: '1mb' }));
+app.use(
+  express.json({
+    limit: '1mb',
+    // The WhatsApp webhook's signature is checked against the exact bytes Meta sent
+    verify: (req, res, buf) => {
+      if (req.originalUrl.startsWith('/api/whatsapp/webhook')) req.rawBody = buf;
+    },
+  }),
+);
 app.use(express.urlencoded({ extended: true }));
 
 // Uploaded media (doctor photos, blog covers, gallery). Only jpg/png/webp images and mp4/webm videos are ever written here.

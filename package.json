@@ -14,7 +14,9 @@
     "seed:schedules": "node src/scripts/seedSchedules.js",
     "seed:gallery": "node src/scripts/seedGallery.js",
     "whatsapp:templates": "node src/scripts/whatsappTemplates.js",
-    "whatsapp:test": "node src/scripts/testWhatsApp.js"
+    "whatsapp:test": "node src/scripts/testWhatsApp.js",
+    "whatsapp:webhook-test": "node src/scripts/testWebhook.js",
+    "backfill:patients": "node src/scripts/backfillPatients.js"
   },
   "repository": {
     "type": "git",

@@ -17,6 +17,9 @@ import {
   adminLeaveRoutes,
   adminSlotPlanRoutes,
 } from '../modules/appointment/index.js';
+import { publicSiteRoutes, adminSiteRoutes } from '../modules/site/index.js';
+import { whatsappWebhookRoutes, adminInboxRoutes } from '../modules/whatsapp/index.js';
+import { adminPatientRoutes, adminVisitRoutes, adminReportRoutes } from '../modules/patient/index.js';
 
 const router = Router();
 
@@ -43,5 +46,12 @@ router.use('/appointments', publicAppointmentRoutes);
 router.use('/admin/appointments', adminAppointmentRoutes);
 router.use('/admin/leaves', adminLeaveRoutes);
 router.use('/admin/slot-plans', adminSlotPlanRoutes);
+router.use('/site-settings', publicSiteRoutes);
+router.use('/admin/site-settings', adminSiteRoutes);
+router.use('/whatsapp/webhook', whatsappWebhookRoutes);
+router.use('/admin/inbox', adminInboxRoutes);
+router.use('/admin/patients', adminPatientRoutes);
+router.use('/admin/visits', adminVisitRoutes);
+router.use('/admin/reports', adminReportRoutes);
 
 export default router;

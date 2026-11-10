@@ -1,14 +1,15 @@
 // Sends a sample booking confirmation to one number to check the WhatsApp setup.
 // Usage: npm run whatsapp:test -- 9876543210
 import { sendTemplate, toWhatsAppNumber, verifyWhatsApp, whatsappConfigured } from '../config/whatsapp.js';
-import { TEMPLATES, confirmedMessage } from '../modules/appointment/appointment.whatsapp.js';
+import { confirmedMessage } from '../modules/appointment/appointment.whatsapp.js';
+import { ALL_TEMPLATES } from '../modules/whatsapp/templates.js';
 import { clinicNow } from '../modules/appointment/slots.js';
 
 async function run() {
   const to = toWhatsAppNumber(process.argv[2]);
   if (!to) throw new Error('Pass a mobile number, e.g. npm run whatsapp:test -- 9876543210');
 
-  await verifyWhatsApp(Object.values(TEMPLATES));
+  await verifyWhatsApp(ALL_TEMPLATES);
 
   const sample = {
     patientName: 'Test Patient',

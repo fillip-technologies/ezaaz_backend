@@ -4,6 +4,9 @@ import Enquiry from './enquiry.model.js';
 import Doctor from '../doctor/doctor.model.js';
 import ApiError from '../../shared/utils/ApiError.js';
 import { slugify, uniqueSlug } from '../../shared/utils/schemas.js';
+import env from '../../config/env.js';
+import { notifyStaff, notifyWhatsApp } from '../whatsapp/whatsapp.service.js';
+import { enquiryReceivedMessage, newEnquiryMessage } from './contact.whatsapp.js';
 
 const DEPARTMENT_FIELDS = ['slug', 'name', 'order', 'isActive'];
 const ENQUIRY_FIELDS = ['fullName', 'phone', 'email', 'preferredDate', 'department', 'doctor', 'message', 'source', 'page'];
@@ -56,6 +59,15 @@ export async function createEnquiry(body) {
   }
 
   const enquiry = await Enquiry.create(data);
+
+  // WhatsApp: "we got your message" to the visitor, and an alert to the staff numbers (both only logged on failure)
+  const language = body.language === 'hi' ? 'hi' : 'en';
+  notifyWhatsApp(enquiry.phone, enquiryReceivedMessage({ ...enquiry.toObject(), language }, env.EMERGENCY_PHONE), {
+    name: enquiry.fullName,
+    related: { enquiry: enquiry._id },
+  });
+  notifyStaff(newEnquiryMessage(enquiry), { enquiry: enquiry._id });
+
   return { _id: enquiry._id, createdAt: enquiry.createdAt };
 }
 

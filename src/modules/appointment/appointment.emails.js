@@ -6,8 +6,8 @@ function escapeHtml(value) {
 
 const HOSPITAL = 'Ejaz Hospital';
 
-export function formatDate(date) {
-  return new Intl.DateTimeFormat('en-IN', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
+export function formatDate(date, language = 'en') {
+  return new Intl.DateTimeFormat(language === 'hi' ? 'hi-IN' : 'en-IN', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
     new Date(`${date}T00:00:00Z`),
   );
 }

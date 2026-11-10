@@ -5,11 +5,13 @@ import Leave from './leave.model.js';
 import Doctor, { toMinutes } from '../doctor/doctor.model.js';
 import env from '../../config/env.js';
 import { sendMail } from '../../config/mailer.js';
-import { sendTemplate, toWhatsAppNumber, whatsappConfigured } from '../../config/whatsapp.js';
+import { whatsappConfigured } from '../../config/whatsapp.js';
 import ApiError from '../../shared/utils/ApiError.js';
 import { SEATS_PER_SLOT, addDays, clinicNow, daySlots, daysBetween, isRealDate } from './slots.js';
 import * as emails from './appointment.emails.js';
 import * as whatsapp from './appointment.whatsapp.js';
+import { notifyStaff, notifyWhatsApp as sendWhatsApp } from '../whatsapp/whatsapp.service.js';
+import { findOrCreateForBooking } from '../patient/patient.service.js';
 
 const PATIENT_FIELDS = ['patientName', 'phone', 'email', 'age', 'gender', 'notes'];
 const MAX_RANGE_DAYS = 366;
@@ -32,13 +34,17 @@ function notify(to, message) {
   sendMail({ to, ...message }).catch((err) => console.error(`Appointment email to ${to} failed: ${err.message}`));
 }
 
-// Same for WhatsApp: numbers that can't be valid are skipped, failures are only logged
-function notifyWhatsApp(phone, message) {
-  const to = toWhatsAppNumber(phone);
-  if (!to) return false;
-  sendTemplate(to, message).catch((err) => console.error(`WhatsApp ${message.template.name} to ${to} failed: ${err.message}`));
-  return true;
+// Same for WhatsApp: numbers that can't be valid are skipped, failures are only logged.
+// Every message is also saved in the patient's chat in the admin WhatsApp inbox.
+function notifyWhatsApp(appointment, message) {
+  return sendWhatsApp(appointment.phone, message, {
+    name: appointment.patientName,
+    patient: appointment.patient,
+    related: { appointment: appointment._id },
+  });
 }
+
+const alertStaff = (appointment, change) => notifyStaff(whatsapp.bookingChangeMessage(appointment, change), { appointment: appointment._id });
 
 /* ------------------------------ Slot lookups ------------------------------ */
 
@@ -170,14 +176,24 @@ export async function createAppointment(body) {
     doctorName: doctor.name.en,
     date,
     time,
+    language: body.language === 'hi' ? 'hi' : 'en',
     status: 'confirmed', // bookings are approved automatically; the slot stays taken until an admin cancels it
   });
   await claimSeat(appointment);
 
+  // Link the booking to the patient's record. A problem here is logged, never fails the booking.
+  try {
+    const patient = await findOrCreateForBooking(appointment);
+    appointment.patient = patient._id;
+    await Appointment.updateOne({ _id: appointment._id }, { patient: patient._id });
+  } catch (err) {
+    console.error(`Linking booking ${appointment.ref} to a patient failed: ${err.message}`);
+  }
+
   notify(appointment.email, emails.confirmedEmail(appointment));
   notify(env.APPOINTMENT_NOTIFY_EMAIL, emails.newRequestEmail(appointment));
-  notifyWhatsApp(appointment.phone, whatsapp.confirmedMessage(appointment));
-  for (const number of env.WHATSAPP_NOTIFY_NUMBERS) notifyWhatsApp(number, whatsapp.newBookingMessage(appointment));
+  notifyWhatsApp(appointment, whatsapp.confirmedMessage(appointment));
+  notifyStaff(whatsapp.newBookingMessage(appointment), { appointment: appointment._id });
 
   return { ref: appointment.ref, doctorName: appointment.doctorName, date, time, status: appointment.status };
 }
@@ -239,11 +255,17 @@ export async function updateAppointment(id, body) {
     }
     if (body.status === 'confirmed') {
       notify(appointment.email, emails.confirmedEmail(appointment));
-      notifyWhatsApp(appointment.phone, whatsapp.confirmedMessage(appointment));
+      notifyWhatsApp(appointment, whatsapp.confirmedMessage(appointment));
     }
     if (body.status === 'cancelled') {
       notify(appointment.email, emails.cancelledEmail(appointment));
-      notifyWhatsApp(appointment.phone, whatsapp.cancelledMessage(appointment));
+      notifyWhatsApp(appointment, whatsapp.cancelledMessage(appointment));
+      alertStaff(appointment, 'cancelled');
+    }
+    if (body.status === 'no_show') notifyWhatsApp(appointment, whatsapp.missedMessage(appointment));
+    if (body.status === 'completed') {
+      const followUpDate = body.followUpDate && isRealDate(String(body.followUpDate)) ? String(body.followUpDate) : '';
+      notifyWhatsApp(appointment, whatsapp.visitThanksMessage(appointment, { followUpDate }));
     }
     return appointment;
   }
@@ -272,11 +294,22 @@ export async function rescheduleAppointment(id, body) {
   if (slot.remaining <= 0) throw slotTaken();
 
   // Free the old seat first, then claim one in the new slot (restoring the old slot if that fails)
-  const old = { doctor: appointment.doctor, doctorName: appointment.doctorName, date: appointment.date, time: appointment.time, seat: appointment.seat, active: appointment.active };
+  const old = {
+    doctor: appointment.doctor,
+    doctorName: appointment.doctorName,
+    date: appointment.date,
+    time: appointment.time,
+    seat: appointment.seat,
+    active: appointment.active,
+    reminderSentAt: appointment.reminderSentAt,
+    patientConfirmedAt: appointment.patientConfirmedAt,
+    changeRequestedAt: appointment.changeRequestedAt,
+  };
   appointment.active = false;
   await appointment.save();
 
-  Object.assign(appointment, { doctor: doctor._id, doctorName: doctor.name.en, date, time });
+  // A new time answers any "Need to change" request and needs a fresh reminder
+  Object.assign(appointment, { doctor: doctor._id, doctorName: doctor.name.en, date, time, reminderSentAt: null, patientConfirmedAt: null, changeRequestedAt: null });
   appointment.status = 'confirmed';
   try {
     await claimSeat(appointment);
@@ -286,7 +319,8 @@ export async function rescheduleAppointment(id, body) {
     throw err;
   }
   notify(appointment.email, emails.rescheduledEmail(appointment));
-  notifyWhatsApp(appointment.phone, whatsapp.rescheduledMessage(appointment));
+  notifyWhatsApp(appointment, whatsapp.rescheduledMessage(appointment));
+  alertStaff(appointment, 'postponed to a new time');
   return appointment;
 }
 
@@ -331,7 +365,7 @@ export async function createLeave(body) {
   let whatsappedPatients = 0;
   for (const appointment of affected) {
     notify(appointment.email, emails.doctorUnavailableEmail(appointment));
-    if (notifyWhatsApp(appointment.phone, whatsapp.doctorUnavailableMessage(appointment))) whatsappedPatients++;
+    if (notifyWhatsApp(appointment, whatsapp.doctorUnavailableMessage(appointment))) whatsappedPatients++;
   }
   return {
     leave: await leave.populate('doctor', 'name slug'),
@@ -341,8 +375,23 @@ export async function createLeave(body) {
   };
 }
 
+// Patients who were told "don't come" for this leave hear that their booking is going ahead after all.
+// Bookings still covered by another leave entry (or already postponed out of it) get nothing.
 export async function deleteLeave(id) {
   const leave = isObjectId(id) && (await Leave.findById(id));
   if (!leave) throw ApiError.notFound('Leave entry not found');
+  const affected = await bookingsAffectedBy(leave);
   await leave.deleteOne();
+
+  const others = affected.length ? await Leave.find({ date: leave.date, $or: [{ doctor: null }, { doctor: { $in: affected.map((a) => a.doctor) } }] }).lean() : [];
+  const stillBlocked = (a) =>
+    others.some(
+      (l) => (!l.doctor || String(l.doctor) === String(a.doctor)) && (!l.from || (a.time >= l.from && a.time < l.to)),
+    );
+  let whatsappedPatients = 0;
+  for (const appointment of affected) {
+    if (stillBlocked(appointment)) continue;
+    if (notifyWhatsApp(appointment, whatsapp.backOnMessage(appointment))) whatsappedPatients++;
+  }
+  return { affectedBookings: affected.length, whatsappedPatients: whatsappConfigured ? whatsappedPatients : 0 };
 }
