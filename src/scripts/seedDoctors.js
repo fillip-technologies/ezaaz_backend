@@ -10,16 +10,21 @@ import { connectCache, cacheDel, disconnectCache } from '../config/cache.js';
 import Doctor from '../modules/doctor/doctor.model.js';
 import { PHOTO_FOLDER, PUBLIC_LIST_KEY } from '../modules/doctor/doctor.service.js';
 import { publicFileUrl, removeStoredFile, uploadDir } from '../shared/middlewares/upload.js';
+import { isCloudinaryConfigured, uploadToCloudinary } from '../config/cloudinary.js';
 
 const DATA_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'data');
 const fresh = process.argv.includes('--fresh');
 
-function copyPhoto(photoFile) {
+async function copyPhoto(photoFile) {
   if (!photoFile) return '';
   const source = path.join(DATA_DIR, 'doctor-photos', photoFile);
   if (!fs.existsSync(source)) {
     console.warn(`  photo not found: ${photoFile}`);
     return '';
+  }
+  if (isCloudinaryConfigured()) {
+    const uploaded = await uploadToCloudinary(source, { folder: PHOTO_FOLDER });
+    return uploaded.url;
   }
   const dir = uploadDir(PHOTO_FOLDER);
   fs.mkdirSync(dir, { recursive: true });
@@ -46,7 +51,7 @@ async function seed() {
       console.log(`  skip ${data.slug} (already exists)`);
       continue;
     }
-    await Doctor.create({ ...data, photo: copyPhoto(photoFile) });
+    await Doctor.create({ ...data, photo: await copyPhoto(photoFile) });
     console.log(`  added ${data.slug}${data.isActive ? '' : ' (hidden)'}`);
     created++;
   }

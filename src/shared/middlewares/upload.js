@@ -4,6 +4,11 @@ import path from 'node:path';
 import multer from 'multer';
 import env from '../../config/env.js';
 import ApiError from '../utils/ApiError.js';
+import {
+  isCloudinaryConfigured,
+  uploadToCloudinary,
+  deleteFromCloudinary,
+} from '../../config/cloudinary.js';
 
 // Extension comes from the detected mimetype, never from the client's filename. No SVG (can carry scripts).
 const IMAGE_TYPES = { 'image/jpeg': '.jpg', 'image/png': '.png', 'image/webp': '.webp' };
@@ -34,7 +39,36 @@ function fileUpload({ folder, field, maxMb, maxFiles = 1, types, typeError, root
 
   return (req, res, next) => {
     req.uploadLimitMb = maxMb; // used by the error handler's "file too large" message
-    handler(req, res, next);
+    handler(req, res, async (err) => {
+      if (err) return next(err);
+
+      // If Cloudinary is configured and this is a public upload, upload to Cloudinary
+      if (!root && isCloudinaryConfigured()) {
+        const resourceType = types === VIDEO_TYPES ? 'video' : 'auto';
+        try {
+          if (req.file) {
+            const uploaded = await uploadToCloudinary(req.file.path, { folder, resourceType });
+            await fs.promises.unlink(req.file.path).catch(() => {});
+            req.file.filename = uploaded.url;
+            req.file.cloudinaryUrl = uploaded.url;
+          }
+          if (req.files && Array.isArray(req.files)) {
+            await Promise.all(
+              req.files.map(async (file) => {
+                const uploaded = await uploadToCloudinary(file.path, { folder, resourceType });
+                await fs.promises.unlink(file.path).catch(() => {});
+                file.filename = uploaded.url;
+                file.cloudinaryUrl = uploaded.url;
+              }),
+            );
+          }
+        } catch (uploadErr) {
+          return next(uploadErr);
+        }
+      }
+
+      next();
+    });
   };
 }
 
@@ -113,15 +147,21 @@ export async function removePrivateFile(folder, storedName) {
   });
 }
 
-// Public URL for a stored file, e.g. /uploads/doctors/abc.jpg
+// Public URL for a stored file, e.g. /uploads/doctors/abc.jpg or Cloudinary URL
 export function publicFileUrl(folder, filename) {
+  if (!filename) return '';
+  if (/^https?:\/\//i.test(filename)) return filename;
   return `/uploads/${folder}/${filename}`;
 }
 
-// Deletes a previously stored file given its public URL. Only the basename is used,
-// so a stored value can never point outside the upload folder.
+// Deletes a previously stored file given its public URL or Cloudinary URL.
+// Only the basename is used for local files, so a stored value can never point outside the upload folder.
 export async function removeStoredFile(folder, fileUrl) {
   if (!fileUrl) return;
+  if (/^https?:\/\/res\.cloudinary\.com\//i.test(fileUrl)) {
+    await deleteFromCloudinary(fileUrl);
+    return;
+  }
   const target = path.join(uploadDir(folder), path.basename(fileUrl));
   await fs.promises.unlink(target).catch((err) => {
     if (err.code !== 'ENOENT') console.warn(`Could not delete ${target}: ${err.message}`);

@@ -16,7 +16,8 @@
     "whatsapp:templates": "node src/scripts/whatsappTemplates.js",
     "whatsapp:test": "node src/scripts/testWhatsApp.js",
     "whatsapp:webhook-test": "node src/scripts/testWebhook.js",
-    "backfill:patients": "node src/scripts/backfillPatients.js"
+    "backfill:patients": "node src/scripts/backfillPatients.js",
+    "migrate:cloudinary": "node src/scripts/migrateToCloudinary.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
   "homepage": "https://github.com/fillip-technologies/ezaaz_backend#readme",
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.11.0",
     "cors": "^2.8.6",
     "dotenv": "^18.0.8",
     "express": "^5.3.0",

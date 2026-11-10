@@ -13,6 +13,7 @@ import GalleryItem from '../modules/gallery/gallery.model.js';
 import GalleryCategory from '../modules/gallery/galleryCategory.model.js';
 import { MEDIA_FOLDER, PUBLIC_GALLERY_KEY } from '../modules/gallery/gallery.service.js';
 import { publicFileUrl, removeStoredFile, uploadDir } from '../shared/middlewares/upload.js';
+import { isCloudinaryConfigured, uploadToCloudinary } from '../config/cloudinary.js';
 
 const DATA_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'data');
 const fresh = process.argv.includes('--fresh');
@@ -20,12 +21,16 @@ const fromIndex = process.argv.indexOf('--from');
 const ASSETS_DIR = path.resolve(fromIndex > -1 ? process.argv[fromIndex + 1] || '' : '../client/src/assets');
 const IMAGE_EXT = { '.jpg': '.jpg', '.jpeg': '.jpg', '.png': '.png', '.webp': '.webp' };
 
-function copyImage(file) {
+async function copyImage(file) {
   const source = path.join(ASSETS_DIR, file);
   const ext = IMAGE_EXT[path.extname(file).toLowerCase()];
   if (!ext || !fs.existsSync(source)) {
     console.warn(`  image not found: ${source}`);
     return '';
+  }
+  if (isCloudinaryConfigured()) {
+    const uploaded = await uploadToCloudinary(source, { folder: MEDIA_FOLDER });
+    return uploaded.url;
   }
   const dir = uploadDir(MEDIA_FOLDER);
   fs.mkdirSync(dir, { recursive: true });
@@ -64,7 +69,7 @@ async function seed() {
     const categoryIds = new Map((await GalleryCategory.find().lean()).map((c) => [c.slug, c._id]));
     let order = 0;
     for (const { file, categorySlug, ...data } of photos) {
-      const image = copyImage(file);
+      const image = await copyImage(file);
       if (!image) continue;
       await GalleryItem.create({ ...data, type: 'photo', image, category: categoryIds.get(categorySlug) ?? null, order: order++ });
       console.log(`  added ${file}${data.showOnHome ? ' (home page)' : ''}`);

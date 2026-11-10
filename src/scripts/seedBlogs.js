@@ -13,16 +13,21 @@ import BlogCategory from '../modules/blog/blogCategory.model.js';
 import Doctor from '../modules/doctor/doctor.model.js';
 import { COVER_FOLDER, PUBLIC_BLOGS_KEY } from '../modules/blog/blog.service.js';
 import { publicFileUrl, removeStoredFile, uploadDir } from '../shared/middlewares/upload.js';
+import { isCloudinaryConfigured, uploadToCloudinary } from '../config/cloudinary.js';
 
 const DATA_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'data');
 const fresh = process.argv.includes('--fresh');
 const readJson = (name) => JSON.parse(fs.readFileSync(path.join(DATA_DIR, name), 'utf8'));
 
-function copyCover(coverFile) {
+async function copyCover(coverFile) {
   const source = path.join(DATA_DIR, 'blog-covers', coverFile || '');
   if (!coverFile || !fs.existsSync(source)) {
     if (coverFile) console.warn(`  cover not found: ${coverFile}`);
     return '';
+  }
+  if (isCloudinaryConfigured()) {
+    const uploaded = await uploadToCloudinary(source, { folder: COVER_FOLDER });
+    return uploaded.url;
   }
   const dir = uploadDir(COVER_FOLDER);
   fs.mkdirSync(dir, { recursive: true });
@@ -61,7 +66,7 @@ async function seed() {
     }
     const authorDoctor = authorDoctorSlug ? doctorIds.get(authorDoctorSlug) ?? null : null;
     if (authorDoctorSlug && !authorDoctor) console.warn(`  ${data.slug}: author ${authorDoctorSlug} not found, left empty`);
-    await Blog.create({ ...data, category: categoryIds.get(categorySlug), authorDoctor, coverImage: copyCover(coverFile) });
+    await Blog.create({ ...data, category: categoryIds.get(categorySlug), authorDoctor, coverImage: await copyCover(coverFile) });
     console.log(`  added ${data.slug}${data.isFeatured ? ' (featured)' : ''}`);
     created++;
   }

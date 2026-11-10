@@ -76,6 +76,12 @@ const env = Object.freeze({
   // Patient reports and WhatsApp media. Never served publicly: only through signed-in admin routes.
   PRIVATE_UPLOAD_DIR: path.resolve(process.env.PRIVATE_UPLOAD_DIR || 'private_uploads'),
   MAX_REPORT_MB: Number(process.env.MAX_REPORT_MB) || 15,
+
+  // Cloudinary configuration (Remote cloud media storage)
+  CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME || '',
+  CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY || '',
+  CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET || '',
+  CLOUDINARY_URL: process.env.CLOUDINARY_URL || '',
 });
 
 export default env;
