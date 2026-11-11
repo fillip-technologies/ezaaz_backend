@@ -70,14 +70,19 @@ const env = Object.freeze({
   // Namespaces keys so several apps/environments can share one Redis database
   REDIS_KEY_PREFIX: process.env.REDIS_KEY_PREFIX ?? 'ezaaz:',
 
-  // Uploaded files (doctor photos) are stored here and served at /uploads
+  // Without Cloudinary, uploaded website media (doctor photos, blog covers, gallery) is saved here and served at /uploads
   UPLOAD_DIR: path.resolve(process.env.UPLOAD_DIR || 'uploads'),
   MAX_UPLOAD_MB: Number(process.env.MAX_UPLOAD_MB) || 3,
-  // Patient reports and WhatsApp media. Never served publicly: only through signed-in admin routes.
+  // Without Cloudinary, patient reports and WhatsApp media are saved here. Never served publicly: only through signed-in admin routes.
   PRIVATE_UPLOAD_DIR: path.resolve(process.env.PRIVATE_UPLOAD_DIR || 'private_uploads'),
-  MAX_REPORT_MB: Number(process.env.MAX_REPORT_MB) || 15,
+  // Cloudinary's Free plan takes documents up to 10 MB
+  MAX_REPORT_MB: Number(process.env.MAX_REPORT_MB) || 10,
+  // Private files read from Cloudinary (reports, WhatsApp media) are kept in Redis this long, so opening one again is instant.
+  // Only files up to FILE_CACHE_MAX_KB, to leave room for the page caches. 0 turns it off.
+  FILE_CACHE_TTL_SECONDS: Number(process.env.FILE_CACHE_TTL_SECONDS ?? 900),
+  FILE_CACHE_MAX_KB: Number(process.env.FILE_CACHE_MAX_KB ?? 2048),
 
-  // Cloudinary configuration (Remote cloud media storage)
+  // Cloudinary: every upload is stored here when these are set (website media public, reports and WhatsApp media private)
   CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME || '',
   CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY || '',
   CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET || '',

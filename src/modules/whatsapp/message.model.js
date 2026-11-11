@@ -25,7 +25,7 @@ const messageSchema = new mongoose.Schema(
       mime: String,
       filename: String,
       size: Number,
-      // File name inside PRIVATE_UPLOAD_DIR/whatsapp or /reports (never a public path)
+      // Private file in `folder`: "cloudinary:..." or a file name in PRIVATE_UPLOAD_DIR (never a public path)
       storedName: String,
       folder: String,
     },

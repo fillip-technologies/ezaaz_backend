@@ -17,7 +17,7 @@ import {
   whatsappConfigured,
 } from '../../config/whatsapp.js';
 import ApiError from '../../shared/utils/ApiError.js';
-import { privateFilePath, savePrivateFile } from '../../shared/middlewares/upload.js';
+import { readPrivateFile, savePrivateFile } from '../../shared/middlewares/upload.js';
 import Conversation, { WINDOW_MS, windowOpen } from './conversation.model.js';
 import Message, { STATUS_RANK } from './message.model.js';
 import { publish } from './inbox.events.js';
@@ -34,7 +34,8 @@ import { REPORT_PAYLOAD, reportNoticeMessage, reportReadyMessage } from '../pati
 // admin inbox shows the whole history: automatic booking notices, staff replies and the patient's messages.
 
 export const MEDIA_FOLDER = 'whatsapp';
-const MAX_INBOUND_MEDIA_BYTES = 25 * 1024 * 1024;
+// Largest file a patient can send that's stored (Cloudinary Free plan: 100 MB videos, 10 MB everything else)
+const maxInboundBytes = (mime) => (String(mime || '').startsWith('video/') ? 100 : 10) * 1024 * 1024;
 const PREVIEW_LENGTH = 90;
 const NO_CONFIG_ERROR = 'WhatsApp is not configured: the message was printed to the server console';
 const OPTED_OUT_ERROR = 'The patient replied STOP to WhatsApp messages';
@@ -323,7 +324,7 @@ export async function sendTextFromInbox(id, text, admin) {
   return sendFreeForm(conversation, { type: 'text', text: body, sentBy: admin._id }, () => sendText(conversation.waId, body));
 }
 
-// A file chosen in the inbox (saved by privateDocumentUpload into PRIVATE_UPLOAD_DIR/whatsapp)
+// A file chosen in the inbox (stored privately by privateDocumentUpload; its contents are still in file.buffer)
 export async function sendFileFromInbox(id, file, caption, admin) {
   if (!file) throw ApiError.badRequest('Choose a file');
   const conversation = await getConversationDoc(id);
@@ -332,7 +333,7 @@ export async function sendFileFromInbox(id, file, caption, admin) {
   const media = { mime: file.mimetype, filename, size: file.size, storedName: file.filename, folder: MEDIA_FOLDER };
   const text = String(caption || '').trim().slice(0, 1000);
   return sendFreeForm(conversation, { type: isImage ? 'image' : 'document', text, media, sentBy: admin._id }, async () => {
-    const mediaId = await uploadMedia(file.path, file.mimetype, filename);
+    const mediaId = await uploadMedia(file.buffer, file.mimetype, filename);
     return isImage ? sendImage(conversation.waId, { mediaId, caption: text }) : sendDocument(conversation.waId, { mediaId, filename, caption: text });
   });
 }
@@ -377,7 +378,9 @@ export async function sendTemplateFromInbox(id, key, values = {}, admin) {
 export async function messageFile(messageId) {
   const message = isObjectId(messageId) && (await Message.findById(messageId).lean());
   if (!message?.media?.storedName) throw ApiError.notFound('File not found');
-  return { path: privateFilePath(message.media.folder || MEDIA_FOLDER, message.media.storedName), mime: message.media.mime, filename: message.media.filename };
+  const buffer = await readPrivateFile(message.media.folder || MEDIA_FOLDER, message.media.storedName);
+  if (!buffer) throw ApiError.notFound('File not found');
+  return { buffer, mime: message.media.mime, filename: message.media.filename };
 }
 
 /* --------------------------------- Reports --------------------------------- */
@@ -409,7 +412,11 @@ export async function sendReport(reportId, admin) {
   }
   if (conversation.optedOut) throw ApiError.conflict(`${patient.name} replied STOP, so WhatsApp messages can't be sent.`);
 
-  const filePath = privateFilePath(REPORT_FOLDER, report.file.storedName);
+  const readFile = async () => {
+    const buffer = await readPrivateFile(REPORT_FOLDER, report.file.storedName);
+    if (!buffer) throw ApiError.notFound('The report file is missing');
+    return buffer;
+  };
   const filename = reportFilename(report);
   const media = { mime: report.file.mime, filename, size: report.file.size, storedName: report.file.storedName, folder: REPORT_FOLDER };
   const isPdf = report.file.mime === 'application/pdf';
@@ -426,7 +433,7 @@ export async function sendReport(reportId, admin) {
       conversation,
       { type: isImage ? 'image' : 'document', text: caption, media, label: 'Report sent', related, sentBy },
       async () => {
-        const mediaId = await uploadMedia(filePath, report.file.mime, filename);
+        const mediaId = await uploadMedia(await readFile(), report.file.mime, filename);
         return isImage ? sendImage(waId, { mediaId, caption }) : sendDocument(waId, { mediaId, filename, caption });
       },
       { automatic: !admin },
@@ -439,7 +446,7 @@ export async function sendReport(reportId, admin) {
       sentBy,
       media,
       beforeSend: async (msg) => {
-        msg.header = { document: { id: await uploadMedia(filePath, report.file.mime, filename), filename } };
+        msg.header = { document: { id: await uploadMedia(await readFile(), report.file.mime, filename), filename } };
       },
     });
   } else {
@@ -478,7 +485,7 @@ function parseInbound(m) {
 async function storeInboundMedia(message) {
   if (!whatsappConfigured) return;
   const { buffer, mime } = await downloadMedia(message.media.metaId);
-  if (buffer.length > MAX_INBOUND_MEDIA_BYTES) return;
+  if (buffer.length > maxInboundBytes(mime)) return;
   message.media.storedName = await savePrivateFile(MEDIA_FOLDER, buffer, mime);
   message.media.folder = MEDIA_FOLDER;
   message.media.size = buffer.length;

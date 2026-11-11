@@ -1,10 +1,12 @@
-import { createClient } from 'redis';
+import { createClient, RESP_TYPES } from 'redis';
 import env from './env.js';
 
 // Read-through cache on top of MongoDB. Every function here is safe to call when Redis
 // is not configured or is down: reads return null (caller falls back to the DB), writes no-op.
 
 let client = null;
+// Same connection, but replies come back as Buffers (cached files) instead of strings
+let binaryClient = null;
 const k = (key) => `${env.REDIS_KEY_PREFIX}${key}`;
 let lastState = '';
 
@@ -29,6 +31,8 @@ export function connectCache() {
       reconnectStrategy: (retries) => Math.min(retries * 500, 10000),
     },
   });
+
+  binaryClient = client.withTypeMapping({ [RESP_TYPES.BLOB_STRING]: Buffer });
 
   client.on('ready', () => logState('ready'));
   client.on('error', (err) => logState('unavailable', err.code || err.message));
@@ -72,5 +76,25 @@ export async function cacheDel(...keys) {
     await client.del(keys.map(k));
   } catch (err) {
     console.warn(`Cache delete failed for ${keys.join(', ')}: ${err.message}`);
+  }
+}
+
+// Binary values (file contents). A ttl of 0 skips the write.
+export async function cacheGetBuffer(key) {
+  if (!client?.isReady) return null;
+  try {
+    return await binaryClient.get(k(key));
+  } catch (err) {
+    console.warn(`Cache read failed for ${key}: ${err.message}`);
+    return null;
+  }
+}
+
+export async function cacheSetBuffer(key, buffer, ttlSeconds) {
+  if (!client?.isReady || !ttlSeconds) return;
+  try {
+    await client.set(k(key), buffer, { EX: ttlSeconds });
+  } catch (err) {
+    console.warn(`Cache write failed for ${key}: ${err.message}`);
   }
 }

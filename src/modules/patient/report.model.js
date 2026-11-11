@@ -16,8 +16,8 @@ const sendSchema = new mongoose.Schema(
   { _id: false },
 );
 
-// A file in the patient's record (lab result, scan, prescription, ...). Stored in PRIVATE_UPLOAD_DIR/reports
-// and only served to signed-in admins.
+// A file in the patient's record (lab result, scan, prescription, ...). Stored privately on Cloudinary (or in
+// PRIVATE_UPLOAD_DIR/reports without it) and only served to signed-in admins.
 const reportSchema = new mongoose.Schema(
   {
     patient: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', required: true },

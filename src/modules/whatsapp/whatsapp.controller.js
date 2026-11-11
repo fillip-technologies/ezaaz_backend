@@ -1,4 +1,3 @@
-import fs from 'node:fs';
 import env from '../../config/env.js';
 import { validSignature } from '../../config/whatsapp.js';
 import ApiError from '../../shared/utils/ApiError.js';
@@ -80,11 +79,10 @@ export async function listTemplates(req, res) {
 
 export async function messageFile(req, res) {
   const file = await whatsappService.messageFile(req.params.messageId);
-  if (!fs.existsSync(file.path)) throw ApiError.notFound('File not found');
   res.set('Cache-Control', 'private, no-store');
   res.set('X-Content-Type-Options', 'nosniff');
   res.type(file.mime || 'application/octet-stream');
   res.attachment(file.filename || 'file');
   if (req.query.inline && /^(image|audio|video)\/|^application\/pdf$/.test(file.mime || '')) res.set('Content-Disposition', 'inline');
-  fs.createReadStream(file.path).pipe(res);
+  res.send(file.buffer);
 }

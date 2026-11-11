@@ -4,8 +4,8 @@ import { MEDIA_FOLDER } from './gallery.service.js';
 import { protect } from '../../shared/middlewares/auth.js';
 import { imageUpload, imagesUpload, videoUpload } from '../../shared/middlewares/upload.js';
 
-// Camera photos are often 8–12 MB; large videos are better added as YouTube links
-export const PHOTO_MAX_MB = 15;
+// Cloudinary's Free plan takes photos up to 10 MB; large videos are better added as YouTube links
+export const PHOTO_MAX_MB = 10;
 export const PHOTOS_PER_UPLOAD = 20;
 export const VIDEO_MAX_MB = 100;
 

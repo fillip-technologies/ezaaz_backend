@@ -8,7 +8,7 @@ import Doctor from '../doctor/doctor.model.js';
 import Conversation from '../whatsapp/conversation.model.js';
 import { toWhatsAppNumber } from '../../config/whatsapp.js';
 import ApiError from '../../shared/utils/ApiError.js';
-import { privateFilePath, removePrivateFile } from '../../shared/middlewares/upload.js';
+import { readPrivateFile, removePrivateFile } from '../../shared/middlewares/upload.js';
 
 const PATIENT_FIELDS = ['name', 'phone', 'email', 'dob', 'age', 'gender', 'address', 'bloodGroup', 'allergies', 'chronicConditions', 'language', 'notes'];
 const VISIT_FIELDS = ['date', 'chiefComplaint', 'vitals', 'diagnosis', 'prescription', 'advice', 'followUpDate'];
@@ -219,7 +219,7 @@ export async function deleteVisit(id) {
 
 /* --------------------------------- Reports --------------------------------- */
 
-// `file` was saved by privateDocumentUpload into PRIVATE_UPLOAD_DIR/reports
+// `file` was stored privately by privateDocumentUpload (Cloudinary, or PRIVATE_UPLOAD_DIR/reports)
 export async function createReport(patientId, file, body, admin) {
   if (!file) throw invalid('file', 'Choose a PDF, JPG or PNG file');
   try {
@@ -254,8 +254,10 @@ async function getReportDoc(id) {
 export async function reportFile(id) {
   const report = await getReportDoc(id);
   const ext = { 'application/pdf': '.pdf', 'image/jpeg': '.jpg', 'image/png': '.png' }[report.file.mime] || '';
+  const buffer = await readPrivateFile(REPORT_FOLDER, report.file.storedName);
+  if (!buffer) throw ApiError.notFound('The report file is missing');
   return {
-    path: privateFilePath(REPORT_FOLDER, report.file.storedName),
+    buffer,
     mime: report.file.mime,
     filename: `${report.title.replace(/[^\p{L}\p{N} ._-]+/gu, '').trim() || 'report'}${ext}`,
   };

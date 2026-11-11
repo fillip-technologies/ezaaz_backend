@@ -22,7 +22,8 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true }));
 
-// Uploaded media (doctor photos, blog covers, gallery). Only jpg/png/webp images and mp4/webm videos are ever written here.
+// Uploaded media (doctor photos, blog covers, gallery) when Cloudinary isn't configured, and files saved before it was.
+// Only jpg/png/webp images and mp4/webm videos are ever written here.
 app.use(
   '/uploads',
   express.static(env.UPLOAD_DIR, {

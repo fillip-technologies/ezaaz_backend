@@ -1,5 +1,4 @@
 import crypto from 'node:crypto';
-import fs from 'node:fs';
 import env from './env.js';
 
 // WhatsApp Cloud API client. Messages the hospital starts must use a template that Meta has approved;
@@ -153,14 +152,14 @@ export async function sendInteractive(to, interactive, previewText) {
   return postMessage(to, { type: 'interactive', interactive });
 }
 
-// Uploads a stored file to Meta and returns its media id (valid for 30 days). Media is uploaded at send time,
+// Uploads a file's contents to Meta and returns its media id (valid for 30 days). Media is uploaded at send time,
 // so reports never need a public URL.
-export async function uploadMedia(filePath, mime, filename) {
+export async function uploadMedia(buffer, mime, filename) {
   if (!whatsappConfigured) return null;
   const form = new FormData();
   form.append('messaging_product', 'whatsapp');
   form.append('type', mime);
-  form.append('file', new Blob([await fs.promises.readFile(filePath)], { type: mime }), filename);
+  form.append('file', new Blob([buffer], { type: mime }), filename);
   const data = await graphRequest(`${env.WHATSAPP_PHONE_NUMBER_ID}/media`, { method: 'POST', form, timeout: UPLOAD_TIMEOUT_MS });
   return data.id;
 }

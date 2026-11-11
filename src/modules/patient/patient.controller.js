@@ -1,7 +1,5 @@
-import fs from 'node:fs';
 import * as patientService from './patient.service.js';
 import { sendReport } from '../whatsapp/whatsapp.service.js';
-import ApiError from '../../shared/utils/ApiError.js';
 
 /* Patients */
 
@@ -42,16 +40,15 @@ export async function createReport(req, res) {
   res.status(201).json({ success: true, data: await patientService.createReport(req.params.id, req.file, req.body ?? {}, req.admin) });
 }
 
-// Streams the private file; ?inline=1 opens it in the browser instead of downloading
+// Sends the private file; ?inline=1 opens it in the browser instead of downloading
 export async function reportFile(req, res) {
   const file = await patientService.reportFile(req.params.id);
-  if (!fs.existsSync(file.path)) throw ApiError.notFound('The report file is missing');
   res.set('Cache-Control', 'private, no-store');
   res.set('X-Content-Type-Options', 'nosniff');
   res.type(file.mime);
   const disposition = req.query.inline ? 'inline' : 'attachment';
   res.set('Content-Disposition', `${disposition}; filename*=UTF-8''${encodeURIComponent(file.filename)}`);
-  fs.createReadStream(file.path).pipe(res);
+  res.send(file.buffer);
 }
 
 export async function updateReport(req, res) {
