@@ -4,6 +4,15 @@ import { localized, maxItems } from '../../shared/utils/schemas.js';
 // Videos the admin can replace from Settings → Website videos. '' = the website uses its built-in default.
 export const VIDEO_KEYS = ['intro', 'hero'];
 
+// Pages whose top banner image the admin can replace from Settings → Page banners. '' = the page's built-in image.
+// Must match PAGE_BANNERS in the website's features/site/pageBanners.js.
+export const PAGE_BANNER_KEYS = [
+  'about', 'doctors', 'contact', 'blogs', 'bookAppointment', 'appointmentBooking', 'research', 'caseStudies',
+  'emergency', 'diagnosis', 'radiology',
+  'laparoscopic', 'roboticSurgery', 'cancer', 'hernia', 'orthopaedics', 'generalSurgery', 'gastrointestinal',
+  'physiotherapy', 'anaesthesia', 'plasticSurgery', 'urology', 'generalInternal', 'gynaecology',
+];
+
 // Icons the website can show next to a home header stat
 export const STAT_ICONS = ['operations', 'experience', 'patients', 'doctors', 'beds', 'heart', 'ambulance', 'award'];
 export const MAX_HERO_STATS = 6;
@@ -18,6 +27,12 @@ const heroStatSchema = new mongoose.Schema(
   { _id: false },
 );
 
+// One image URL per page in PAGE_BANNER_KEYS
+const pageBannersSchema = new mongoose.Schema(
+  Object.fromEntries(PAGE_BANNER_KEYS.map((key) => [key, { type: String, default: '' }])),
+  { _id: false },
+);
+
 // One document holding site-wide settings
 const siteSettingSchema = new mongoose.Schema(
   {
@@ -27,6 +42,8 @@ const siteSettingSchema = new mongoose.Schema(
     heroVideo: { type: String, default: '' },
     // Home header stats bar. Empty = the website shows its built-in numbers.
     heroStats: { type: [heroStatSchema], default: [], validate: maxItems(MAX_HERO_STATS) },
+    // Top banner image of each inner page
+    pageBanners: { type: pageBannersSchema, default: () => ({}) },
   },
   {
     timestamps: true,
