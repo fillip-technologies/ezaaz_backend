@@ -21,3 +21,11 @@ export async function resetVideo(req, res) {
 export async function updateHeroStats(req, res) {
   res.json({ success: true, data: await siteService.updateHeroStats(req.body ?? {}) });
 }
+
+export async function uploadPageBanner(req, res) {
+  res.json({ success: true, data: await siteService.setPageBanner(req.params.key, req.file) });
+}
+
+export async function resetPageBanner(req, res) {
+  res.json({ success: true, data: await siteService.resetPageBanner(req.params.key) });
+}
